@@ -2,10 +2,13 @@ title: Ryan Do # your name (or website title) here
 logo: "/images/Profile_pic.png?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
   Business Analytics | Machine Learning | Data Science 
+  
   <br><br>
   0435 079 336 | ryan.do.contact@gmail.com
   <br><br>
   <a href="https://www.linkedin.com/in/ryanism/">View My LinkedIn Profile</a> 
+
+  Thank you for reading!
   
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
