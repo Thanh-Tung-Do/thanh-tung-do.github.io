@@ -302,6 +302,25 @@
     /* ─── Hero ─────────────────────────────────────────────────────── */
     #hero {
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(74,111,165,0.18) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 10%, transparent 75%);
+      mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 10%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #hero .container {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-photo {
