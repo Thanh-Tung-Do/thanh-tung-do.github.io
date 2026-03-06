@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Compliance Detector — Ryan Do</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:       #ffffff;
+      --color-surface:  #f4f6f9;
+      --color-border:   #e2e6ec;
+      --color-text:     #1a1f2e;
+      --color-muted:    #6b7280;
+      --color-accent:   #4a6fa5;
+      --color-accent-h: #3a5f95;
+      --color-accent-lt:#eef2f9;
+      --font:           'Inter', sans-serif;
+      --radius:         8px;
+      --transition:     0.25s ease;
+      --max-w:          760px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); line-height: 1.7; font-size: 16px; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { color: var(--color-accent-h); }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-size: 1.05rem; font-weight: 700; color: var(--color-text); }
+    .nav-back { font-size: 0.875rem; font-weight: 500; color: var(--color-muted); display: flex; align-items: center; gap: 6px; transition: color var(--transition); }
+    .nav-back:hover { color: var(--color-accent); }
+
+    .project-header { padding: 64px 0 48px; border-bottom: 1px solid var(--color-border); }
+    .project-org-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); background: var(--color-accent-lt); padding: 3px 12px; border-radius: 100px; margin-bottom: 16px; }
+    .project-header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; color: var(--color-text); margin-bottom: 16px; }
+    .project-lead { font-size: 1.1rem; color: var(--color-muted); line-height: 1.65; max-width: 640px; margin-bottom: 24px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; background: var(--color-surface); color: var(--color-accent); border: 1px solid var(--color-border); letter-spacing: 0.02em; }
+
+    .project-body { padding: 56px 0 80px; }
+    .project-body section { margin-bottom: 48px; }
+    .project-body h2 { font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--color-accent-lt); }
+    .project-body p { color: var(--color-muted); margin-bottom: 14px; font-size: 0.975rem; }
+    .project-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .project-body ul li { display: flex; gap: 12px; align-items: flex-start; color: var(--color-muted); font-size: 0.975rem; }
+    .project-body ul li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); margin-top: 9px; }
+
+    .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .result-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 20px 16px; text-align: center; }
+    .result-number { font-size: 1.8rem; font-weight: 700; color: var(--color-accent); line-height: 1; margin-bottom: 6px; }
+    .result-label { font-size: 0.78rem; color: var(--color-muted); font-weight: 500; line-height: 1.4; }
+
+    footer { background: var(--color-text); color: rgba(255,255,255,0.45); text-align: center; padding: 28px 24px; font-size: 0.8rem; }
+    footer a { color: rgba(255,255,255,0.65); }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 600px) { .result-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Ryan Do</a>
+      <a href="../index.html#projects" class="nav-back">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        Back to Projects
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <header class="project-header">
+      <div class="project-org-badge">British American Tobacco</div>
+      <h1>Sales Compliance Detector</h1>
+      <p class="project-lead">
+        An unsupervised machine learning pipeline combining K-Means clustering with statistical outlier
+        detection to identify non-compliant sales behaviour across a 300,000-outlet retail network —
+        protecting incentive payouts and strengthening the integrity of trade marketing reporting.
+      </p>
+      <div class="tag-list">
+        <span class="tag">Python</span>
+        <span class="tag">K-Means</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">pandas</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Anomaly Detection</span>
+      </div>
+    </header>
+
+    <div class="project-body">
+
+      <section>
+        <h2>The Challenge</h2>
+        <p>
+          BAT ran a large-scale trade incentive programme that rewarded retail outlets for achieving sales
+          targets and compliance with merchandising standards. With ~300,000 outlets in scope, manual auditing
+          was not feasible — the team relied on self-reported field data to validate claims.
+        </p>
+        <p>
+          This created an obvious vulnerability: without automated detection, non-compliant outlets could
+          claim incentive payouts they had not legitimately earned. Beyond the direct financial exposure,
+          inaccurate compliance data was feeding into strategic decisions about where to invest field
+          resources — meaning the problem had compounding downstream effects.
+        </p>
+      </section>
+
+      <section>
+        <h2>Approach</h2>
+        <p>
+          I built a two-stage detection pipeline that combined unsupervised clustering with statistical
+          outlier analysis:
+        </p>
+        <ul>
+          <li><strong>Feature engineering:</strong> Constructed behavioural features per outlet — including sales volume consistency, claim frequency, claim timing relative to audit cycles, and deviation from category norms for similar outlet types.</li>
+          <li><strong>K-Means clustering:</strong> Segmented outlets into behavioural groups. Outlets in clusters with atypical claim-to-sales ratios or suspicious timing patterns were flagged for review.</li>
+          <li><strong>Outlier scoring:</strong> Applied z-score and IQR-based outlier detection within each cluster segment to surface the most statistically anomalous individual outlets, reducing the review workload for the compliance team.</li>
+        </ul>
+        <p>
+          Flagged outlets were surfaced in a Power BI compliance dashboard with drill-through capability,
+          enabling the trade marketing team to investigate specific accounts without needing to access
+          the underlying Python pipeline.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Results</h2>
+
+        <div class="result-grid">
+          <div class="result-card">
+            <div class="result-number">300K+</div>
+            <div class="result-label">Retail outlets assessed by the pipeline</div>
+          </div>
+          <div class="result-card">
+            <div class="result-number">↑</div>
+            <div class="result-label">Reporting integrity significantly improved</div>
+          </div>
+          <div class="result-card">
+            <div class="result-number">Auto</div>
+            <div class="result-label">Replaced manual audit sampling with automated detection</div>
+          </div>
+        </div>
+
+        <p style="margin-top:24px;">
+          The compliance team was able to act on specific flagged accounts rather than conducting broad
+          manual audits. Incentive payout accuracy improved and the resulting compliance data became
+          more reliable as an input to field investment decisions.
+        </p>
+      </section>
+
+      <section>
+        <h2>Lessons Learned</h2>
+        <ul>
+          <li>Unsupervised methods require careful interpretation. Because there were no labelled examples of "non-compliant" behaviour, the output of the model was a ranked list of suspicious accounts rather than a definitive classification — setting the right expectations with stakeholders was critical.</li>
+          <li>Clustering is most useful when you have a meaningful basis for segmentation. Grouping by outlet type and region before applying K-Means produced much more coherent anomaly signals than running the algorithm across the entire dataset at once.</li>
+          <li>The dashboard was the product, not the model. Surfacing the results in Power BI with drill-through capability was what made the pipeline usable by the compliance team day-to-day.</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Ryan Do &nbsp;·&nbsp; <a href="../index.html">Back to portfolio</a> &nbsp;·&nbsp; <a href="../Ryan-Do-CV-Analyst.pdf" target="_blank" rel="noopener">Download CV</a></p>
+  </footer>
+
+</body>
+</html>
