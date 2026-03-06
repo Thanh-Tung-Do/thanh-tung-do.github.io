@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Projects — Ryan Do</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:       #ffffff;
+      --color-surface:  #f4f6f9;
+      --color-border:   #e2e6ec;
+      --color-text:     #1a1f2e;
+      --color-muted:    #6b7280;
+      --color-accent:   #4a6fa5;
+      --color-accent-h: #3a5f95;
+      --color-accent-lt:#eef2f9;
+      --font:           'Inter', sans-serif;
+      --radius:         8px;
+      --shadow-sm:      0 1px 3px rgba(0,0,0,.08);
+      --shadow-md:      0 4px 16px rgba(0,0,0,.10);
+      --transition:     0.25s ease;
+      --max-w:          900px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); line-height: 1.7; font-size: 16px; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { color: var(--color-accent-h); }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ─── Nav ─── */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-size: 1.05rem; font-weight: 700; color: var(--color-text); }
+    .nav-back { font-size: 0.875rem; font-weight: 500; color: var(--color-muted); display: flex; align-items: center; gap: 6px; transition: color var(--transition); }
+    .nav-back:hover { color: var(--color-accent); }
+
+    /* ─── Page header ─── */
+    .page-header { padding: 64px 0 48px; border-bottom: 1px solid var(--color-border); }
+    .page-header .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); margin-bottom: 12px; }
+    .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px; }
+    .page-header p { font-size: 1.05rem; color: var(--color-muted); max-width: 560px; }
+
+    /* ─── Section headers ─── */
+    .projects-section { padding: 48px 0; }
+    .projects-section + .projects-section { border-top: 1px solid var(--color-border); }
+    .section-heading { margin-bottom: 28px; }
+    .section-heading h2 { font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px; }
+    .section-heading p { font-size: 0.9rem; color: var(--color-muted); }
+
+    /* ─── Project cards ─── */
+    .project-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .project-item {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .project-item:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .project-item-body { display: flex; flex-direction: column; gap: 8px; }
+
+    .project-item-meta { display: flex; align-items: center; gap: 10px; }
+
+    .org-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      background: var(--color-accent-lt);
+      padding: 2px 10px;
+      border-radius: 100px;
+    }
+
+    .project-type-badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-muted);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 2px 10px;
+      border-radius: 100px;
+    }
+
+    .project-item h3 { font-size: 1.05rem; font-weight: 700; color: var(--color-text); line-height: 1.3; }
+
+    .project-item p { font-size: 0.9rem; color: var(--color-muted); line-height: 1.6; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .tag { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; background: var(--color-surface); color: var(--color-accent); border: 1px solid var(--color-border); letter-spacing: 0.02em; }
+
+    .project-item-action { display: flex; align-items: flex-start; padding-top: 4px; }
+
+    .view-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap var(--transition);
+    }
+
+    .view-link:hover { gap: 8px; }
+
+    /* ─── Footer ─── */
+    footer { background: var(--color-text); color: rgba(255,255,255,0.45); text-align: center; padding: 28px 24px; font-size: 0.8rem; margin-top: 80px; }
+    footer a { color: rgba(255,255,255,0.65); }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 600px) {
+      .project-item { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Ryan Do</a>
+      <a href="index.html#projects" class="nav-back">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        Back to Portfolio
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <header class="page-header">
+      <p class="label">Portfolio</p>
+      <h1>All Projects</h1>
+      <p>End-to-end analytical work spanning professional engagements and personal data projects.</p>
+    </header>
+
+    <!-- ─── Professional Projects ─── -->
+    <section class="projects-section">
+      <div class="section-heading">
+        <h2>Professional Work</h2>
+        <p>Projects delivered in industry roles at BAT and PepsiCo.</p>
+      </div>
+
+      <div class="project-list">
+
+        <div class="project-item">
+          <div class="project-item-body">
+            <div class="project-item-meta">
+              <span class="org-badge">PepsiCo</span>
+            </div>
+            <h3>Client Health Score Model</h3>
+            <p>A predictive scoring system built to proactively identify at-risk key accounts during COVID-19, enabling account managers to intervene before contracts were at risk — achieving 100% Key Account retention across the portfolio.</p>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">pandas</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Predictive Modelling</span>
+            </div>
+          </div>
+          <div class="project-item-action">
+            <a href="projects/client-health-score.html" class="view-link">View details →</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-item-body">
+            <div class="project-item-meta">
+              <span class="org-badge">British American Tobacco</span>
+            </div>
+            <h3>Geospatial Route-to-Market Optimisation</h3>
+            <p>A geospatial analytics project that audited national field territory allocation, identified distribution inefficiencies invisible to conventional reporting, and redesigned routes to deliver a 16% reduction in Route-to-Market costs.</p>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">GeoPandas</span>
+              <span class="tag">pandas</span>
+              <span class="tag">Matplotlib</span>
+              <span class="tag">K-Means Clustering</span>
+              <span class="tag">Geospatial Analysis</span>
+            </div>
+          </div>
+          <div class="project-item-action">
+            <a href="projects/geospatial-rtm.html" class="view-link">View details →</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-item-body">
+            <div class="project-item-meta">
+              <span class="org-badge">British American Tobacco</span>
+            </div>
+            <h3>Sales Compliance Detector</h3>
+            <p>An unsupervised machine learning pipeline combining K-Means clustering with statistical outlier detection to identify non-compliant sales behaviour across a 300,000-outlet retail network, protecting incentive payouts and strengthening reporting integrity.</p>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">K-Means</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">pandas</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Anomaly Detection</span>
+            </div>
+          </div>
+          <div class="project-item-action">
+            <a href="projects/sales-compliance.html" class="view-link">View details →</a>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-item-body">
+            <div class="project-item-meta">
+              <span class="org-badge">British American Tobacco</span>
+            </div>
+            <h3>Power BI Trade Marketing Suite</h3>
+            <p>Design and automation of a multi-report Power BI suite that replaced fragmented manual reporting across ~300,000 retail outlets — resolving longstanding data discrepancies between field systems and head office, and delivering reliable self-serve intelligence to the trade marketing team.</p>
+            <div class="tag-list">
+              <span class="tag">Power BI</span>
+              <span class="tag">DAX</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Data Modelling</span>
+              <span class="tag">ETL</span>
+            </div>
+          </div>
+          <div class="project-item-action">
+            <a href="projects/power-bi-suite.html" class="view-link">View details →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── Personal Data Projects ─── -->
+    <section class="projects-section">
+      <div class="section-heading">
+        <h2>Personal &amp; Data Projects</h2>
+        <p>Independent projects exploring modelling techniques, visualisation, and data analysis.</p>
+      </div>
+
+      <div class="project-list">
+
+        <!-- Add personal projects here -->
+        <div class="project-item" style="background: var(--color-surface); border-style: dashed;">
+          <div class="project-item-body">
+            <div class="project-item-meta">
+              <span class="project-type-badge">Coming Soon</span>
+            </div>
+            <h3 style="color: var(--color-muted);">Projects coming soon</h3>
+            <p>Personal data projects — models, visualisations, and analyses — will be added here.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2025 Ryan Do &nbsp;·&nbsp; <a href="index.html">Back to portfolio</a> &nbsp;·&nbsp; <a href="Ryan-Do-CV-Analyst.pdf" target="_blank" rel="noopener">Download CV</a></p>
+  </footer>
+
+</body>
+</html>
