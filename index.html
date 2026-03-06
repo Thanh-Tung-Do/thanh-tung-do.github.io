@@ -313,6 +313,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cg stroke='%234a6fa5' stroke-width='0.8' fill='none'%3E%3Cline x1='40' y1='60' x2='140' y2='20' opacity='0.3'/%3E%3Cline x1='140' y1='20' x2='240' y2='80' opacity='0.3'/%3E%3Cline x1='140' y1='20' x2='180' y2='160' opacity='0.2'/%3E%3Cline x1='40' y1='60' x2='60' y2='180' opacity='0.25'/%3E%3Cline x1='240' y1='80' x2='260' y2='240' opacity='0.2'/%3E%3Cline x1='60' y1='180' x2='180' y2='160' opacity='0.25'/%3E%3Cline x1='180' y1='160' x2='260' y2='240' opacity='0.2'/%3E%3C/g%3E%3Cg fill='%234a6fa5'%3E%3Ccircle cx='40' cy='60' r='3' opacity='0.4'/%3E%3Ccircle cx='140' cy='20' r='4.5' opacity='0.45'/%3E%3Ccircle cx='240' cy='80' r='3' opacity='0.4'/%3E%3Ccircle cx='60' cy='180' r='4' opacity='0.4'/%3E%3Ccircle cx='180' cy='160' r='3' opacity='0.35'/%3E%3Ccircle cx='260' cy='240' r='2.5' opacity='0.3'/%3E%3C/g%3E%3C/svg%3E");
       background-repeat: repeat;
       background-size: 280px 280px;
+      opacity: 0.55;
       -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black 5%, rgba(0,0,0,0.5) 45%, transparent 70%);
       mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black 5%, rgba(0,0,0,0.5) 45%, transparent 70%);
       pointer-events: none;
@@ -330,7 +331,7 @@
       border-radius: 50%;
       overflow: hidden;
       margin: 0 auto 28px;
-      box-shadow: 0 0 0 4px var(--color-accent-lt), 0 0 0 7px var(--color-border), var(--shadow-md);
+      box-shadow: 0 0 0 4px var(--color-accent-lt), 0 0 0 7px var(--color-border), 0 8px 32px rgba(0,0,0,0.18);
     }
 
     .hero-photo img {
@@ -851,13 +852,13 @@
       <h1 class="hero-name">Ryan Do</h1>
       <p class="hero-title">Business Insights Analyst &nbsp;·&nbsp; Sydney, NSW</p>
       <p class="hero-tagline">
-        Turning complex operational and commercial data into decisions that move the business forward.
+        Turning complex business data into clear insights and practical decisions without confusion.
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">
           <!-- chart icon -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-          View My Work
+          Explore My Work
         </a>
         <a href="./Ryan-Do-CV-Analyst.pdf" target="_blank" rel="noopener" class="btn btn-outline">
           <!-- download icon -->
@@ -874,7 +875,7 @@
       <p class="section-label">About Me</p>
       <div class="about-content">
           <h2 class="section-title" style="margin-bottom:20px;">
-            I help organisations make smarter decisions with data.
+            I am not just someone who knows Python or dashboards. 
           </h2>
           <!-- [Update the bio below to reflect your voice] -->
           <p>
@@ -882,11 +883,11 @@
             messy, high-volume data into clear commercial insight. My work has spanned national trade
             marketing operations at British American Tobacco, key account planning at PepsiCo, and
             teaching advanced data science methods to postgraduate students at the University of
-            Technology Sydney.
+            Technology Sydney. 
           </p>
           <p>
             I hold a Master of Business Analytics from UTS and am comfortable across the full
-            analytical workflow — from writing SQL and Python to building Power BI dashboards and
+            analytical workflow, from writing SQL and Python to building Power BI dashboards and
             presenting findings to senior leadership. I'm drawn to problems where rigorous analysis
             can shift strategy, not just describe it.
           </p>
@@ -962,7 +963,7 @@
             <!-- [Update with your project description] -->
             Developed a predictive scoring model to proactively surface at-risk key accounts during COVID-19.
             Incorporated sales trend, engagement frequency, and contract tenure signals to enable targeted
-            retention actions — resulting in 100% Key Account retention across the portfolio.
+            retention actions - resulting in 100% Key Account retention across the portfolio.
           </p>
           <div class="tag-list">
             <span class="tag">Python</span>
@@ -991,7 +992,7 @@
             <!-- [Update with your project description] -->
             Applied geospatial analytics to audit national territory allocation and identify distribution
             inefficiencies. Redesigned field routes using clustering and proximity analysis, delivering a
-            16% reduction in Route-to-Market costs across the national network.
+            16% reduction in RTM costs across the national network.
           </p>
           <div class="tag-list">
             <span class="tag">Python</span>
@@ -1032,7 +1033,7 @@
         </div>
 
         <!-- Project 4 -->
-        <div class="project-card">
+        <div class="project-card" style="display:none;">
           <div class="project-card-header">
             <div class="project-icon">
               <!-- chart/dashboard icon -->
@@ -1066,7 +1067,7 @@
         <div class="projects-cta-left">
           <div class="projects-cta-label">Full Project Portfolio</div>
           <div class="projects-cta-title">See everything I've built</div>
-          <div class="projects-cta-sub">Professional work and personal data projects — models, visualisations, and analyses.</div>
+          <div class="projects-cta-sub">Professional work and personal data projects - models, visualisations, and analyses.</div>
         </div>
         <div class="projects-cta-arrow">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -1082,7 +1083,7 @@
       <p class="section-label">Skills</p>
       <h2 class="section-title">Tools &amp; Capabilities</h2>
       <p class="section-subtitle">
-        A practitioner across the full analytics stack — from raw data extraction to executive-ready insight.
+        A practitioner across the full analytics stack - from raw data extraction to executive-ready insight.
       </p>
 
       <div class="skills-grid">
@@ -1169,8 +1170,8 @@
       <p class="section-label">Contact</p>
       <h2 class="section-title">Let's Connect</h2>
       <p class="section-subtitle">
-        Open to opportunities in data analytics, business intelligence, and strategy roles —
-        in Sydney and remote. Always happy to chat.
+        If you’re working on something interesting in data, analytics, or strategy, I’d love to hear about it.
+         Always happy to chat.
       </p>
 
       <div class="contact-links">
