@@ -15,7 +15,7 @@ A clean, minimal single-page portfolio built with pure HTML, CSS, and vanilla Ja
 ```
 ├── index.html                    # Main portfolio (all CSS + JS embedded)
 ├── Profile-picture.jpg           # Profile photo
-├── Ryan-Do-CV-Analyst.pdf        # CV download
+├── Ryan-Do-CV.pdf                # CV download
 └── projects/
     ├── client-health-score.html  # PepsiCo — Client Health Score Model
     ├── geospatial-rtm.html       # BAT — Geospatial Route-to-Market Optimisation
