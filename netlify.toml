@@ -1,0 +1,9 @@
+[build]
+  publish = "."
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[context.production]
+  [context.production.environment]
+    NODE_VERSION = "18"

@@ -160,7 +160,7 @@
         <p>Projects delivered in industry roles at BAT and PepsiCo.</p>
       </div>
 
-      <div class="project-list">
+      <div class="project-list" data-cms-render="all.projects">
 
         <div class="project-item">
           <div class="project-item-body">
@@ -255,5 +255,34 @@
     <p>© 2025 Ryan Do &nbsp;·&nbsp; <a href="index.html">Back to portfolio</a> &nbsp;·&nbsp; <a href="Ryan-Do-CV.pdf" target="_blank" rel="noopener">Download CV</a></p>
   </footer>
 
+  <script>
+  (async function () {
+    function esc(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    try {
+      const res = await fetch('/_data/content.json');
+      if (!res.ok) return;
+      const d = await res.json();
+      if (!d.professionalProjects?.length) return;
+      const list = document.querySelector('[data-cms-render="all.projects"]');
+      if (!list) return;
+      list.innerHTML = d.professionalProjects.map(p => `
+        <div class="project-item">
+          <div class="project-item-body">
+            <div class="project-item-meta">
+              <span class="org-badge">${esc(p.org)}</span>
+            </div>
+            <h3>${esc(p.title)}</h3>
+            <p>${esc(p.descriptionFull)}</p>
+            <div class="tag-list">${p.tagsFull.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+          </div>
+          <div class="project-item-action">
+            <a href="${esc(p.link)}" class="view-link">View details →</a>
+          </div>
+        </div>`).join('');
+    } catch (e) {}
+  })();
+  </script>
 </body>
 </html>

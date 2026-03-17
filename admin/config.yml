@@ -1,0 +1,135 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "site_content"
+    label: "Site Content"
+    files:
+
+      # ─── Hero Section ──────────────────────────────────────────────
+      - label: "Hero & About"
+        name: "hero_about"
+        file: "_data/content.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Availability Badge", name: "availability", widget: "string",
+                  hint: "Shown at the top of the hero section. e.g. 'Available for opportunities in Sydney & remote'" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Title", name: "title", widget: "string",
+                  hint: "e.g. 'Business Insights Analyst · Sydney, NSW'" }
+              - { label: "Tagline", name: "tagline", widget: "string",
+                  hint: "One-line summary shown below your title." }
+
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Section Headline", name: "headline", widget: "string" }
+              - label: "Bio Paragraphs"
+                name: "bio"
+                widget: "list"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+              - label: "Experience Timeline"
+                name: "timeline"
+                widget: "list"
+                fields:
+                  - { label: "Role / Title", name: "role", widget: "string" }
+                  - { label: "Organisation", name: "org", widget: "string" }
+                  - { label: "Date Range", name: "date", widget: "string",
+                      hint: "e.g. 'Aug 2024 – Present'" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "number", widget: "string",
+                      hint: "e.g. '6+' or '500+'" }
+                  - { label: "Label", name: "label", widget: "string" }
+
+          - label: "Professional Projects"
+            name: "professionalProjects"
+            widget: "list"
+            fields:
+              - { label: "ID (no spaces)", name: "id", widget: "string",
+                  hint: "Used internally. e.g. 'client-health-score'" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Organisation", name: "org", widget: "string" }
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options:
+                  - { label: "Health / Heart", value: "health" }
+                  - { label: "Map / Location", value: "map" }
+                  - { label: "Shield / Compliance", value: "shield" }
+                  - { label: "Chart / Dashboard", value: "chart" }
+                  - { label: "Default", value: "default" }
+              - { label: "Short Description (homepage card)", name: "descriptionShort", widget: "text",
+                  hint: "2–3 sentences shown on the homepage project card." }
+              - { label: "Full Description (projects page)", name: "descriptionFull", widget: "text",
+                  hint: "2–3 sentences shown on the All Projects listing page." }
+              - label: "Tags (homepage, max 4)"
+                name: "tags"
+                widget: "list"
+                field: { label: "Tag", name: "tag", widget: "string" }
+              - label: "Tags (full list for projects page)"
+                name: "tagsFull"
+                widget: "list"
+                field: { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Detail Page Link", name: "link", widget: "string",
+                  hint: "e.g. 'projects/client-health-score.html'" }
+              - { label: "GitHub URL", name: "githubUrl", widget: "string",
+                  required: false, hint: "Leave blank if no public repo." }
+              - { label: "Show on Homepage", name: "showOnHome", widget: "boolean",
+                  default: true, hint: "Uncheck to hide from homepage (still shows on All Projects page)." }
+
+          - label: "Personal Projects"
+            name: "personalProjects"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Type / Badge", name: "type", widget: "string",
+                  hint: "e.g. 'Machine Learning', 'Visualisation', 'Analysis'" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                field: { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Detail Page Link", name: "link", widget: "string",
+                  required: false, hint: "Leave blank if no detail page." }
+              - { label: "GitHub URL", name: "githubUrl", widget: "string",
+                  required: false }
+
+          - label: "Skills"
+            name: "skills"
+            widget: "list"
+            fields:
+              - { label: "Category Name", name: "category", widget: "string" }
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options:
+                  - { label: "Bar Chart", value: "bar-chart" }
+                  - { label: "Code", value: "code" }
+                  - { label: "Flask / Science", value: "flask" }
+                  - { label: "People / Communication", value: "users" }
+              - label: "Skills"
+                name: "skills"
+                widget: "list"
+                field: { label: "Skill", name: "skill", widget: "string" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "LinkedIn Display Text", name: "linkedin", widget: "string",
+                  hint: "e.g. 'linkedin.com/in/ryanism'" }
+              - { label: "LinkedIn URL", name: "linkedinUrl", widget: "string" }
+              - { label: "Website / GitHub Display Text", name: "github", widget: "string" }
+              - { label: "Website / GitHub URL", name: "githubUrl", widget: "string" }

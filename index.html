@@ -844,10 +844,10 @@
       <div class="hero-photo">
         <img src="Profile-picture.jpg" alt="Ryan Do — Business Insights Analyst" />
       </div>
-      <span class="hero-eyebrow">Available for opportunities in Sydney &amp; remote</span>
-      <h1 class="hero-name">Ryan Do</h1>
-      <p class="hero-title">Business Insights Analyst &nbsp;·&nbsp; Sydney, NSW</p>
-      <p class="hero-tagline">
+      <span class="hero-eyebrow" data-cms="hero.availability">Available for opportunities in Sydney &amp; remote</span>
+      <h1 class="hero-name" data-cms="hero.name">Ryan Do</h1>
+      <p class="hero-title" data-cms="hero.title">Business Insights Analyst &nbsp;·&nbsp; Sydney, NSW</p>
+      <p class="hero-tagline" data-cms="hero.tagline">
         Turning complex business data into clear insights and practical decisions without confusion.
       </p>
       <div class="hero-cta">
@@ -870,16 +870,16 @@
     <div class="container">
       <p class="section-label">About Me</p>
       <div class="about-content">
-          <h2 class="section-title" style="margin-bottom:20px;">
-            I am not just someone who knows Python or dashboards. 
+          <h2 class="section-title" style="margin-bottom:20px;" data-cms="about.headline">
+            I am not just someone who knows Python or dashboards.
           </h2>
-          <!-- [Update the bio below to reflect your voice] -->
+          <div id="about-bio" data-cms-render="about.bio">
           <p>
             With over six years of experience across FMCG and education, I specialise in translating
             messy, high-volume data into clear commercial insight. My work has spanned national trade
             marketing operations at British American Tobacco, key account planning at PepsiCo, and
             teaching advanced data science methods to postgraduate students at the University of
-            Technology Sydney. 
+            Technology Sydney.
           </p>
           <p>
             I hold a Master of Business Analytics from UTS and am comfortable across the full
@@ -887,9 +887,10 @@
             presenting findings to senior leadership. I'm drawn to problems where rigorous analysis
             can shift strategy, not just describe it.
           </p>
+          </div>
 
           <!-- Mini experience timeline -->
-          <div class="mini-timeline">
+          <div class="mini-timeline" data-cms-render="about.timeline">
             <div class="mini-timeline-item">
               <div class="mini-timeline-role">Data Science Tutor &amp; Marker</div>
               <div class="mini-timeline-org">University of Technology Sydney</div>
@@ -909,7 +910,7 @@
       </div>
 
       <!-- Stats strip -->
-      <div class="stats-strip">
+      <div class="stats-strip" data-cms-render="about.stats">
         <div class="stat-card">
           <div class="stat-number">6+</div>
           <div class="stat-label">Years of Industry Experience</div>
@@ -939,7 +940,7 @@
         End-to-end projects across predictive modelling, geospatial analytics, and business intelligence.
       </p>
 
-      <div class="projects-grid">
+      <div class="projects-grid" data-cms-render="home.projects">
 
         <!-- Project 1 -->
         <div class="project-card">
@@ -1082,7 +1083,7 @@
         A practitioner across the full analytics stack - from raw data extraction to executive-ready insight.
       </p>
 
-      <div class="skills-grid">
+      <div class="skills-grid" data-cms-render="skills">
 
         <!-- BI & Reporting -->
         <div class="skill-category">
@@ -1173,21 +1174,21 @@
       <div class="contact-links">
 
         <!-- Email -->
-        <a href="mailto:ryan.do.contact@gmail.com" class="contact-link">
+        <a id="contact-email" href="mailto:ryan.do.contact@gmail.com" class="contact-link">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          ryan.do.contact@gmail.com
+          <span>ryan.do.contact@gmail.com</span>
         </a>
 
         <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/ryanism" target="_blank" rel="noopener" class="contact-link">
+        <a id="contact-linkedin" href="https://linkedin.com/in/ryanism" target="_blank" rel="noopener" class="contact-link">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          linkedin.com/in/ryanism
+          <span>linkedin.com/in/ryanism</span>
         </a>
 
         <!-- GitHub / Portfolio -->
-        <a href="https://thanh-tung-do.github.io" target="_blank" rel="noopener" class="contact-link">
+        <a id="contact-github" href="https://thanh-tung-do.github.io" target="_blank" rel="noopener" class="contact-link">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          thanh-tung-do.github.io
+          <span>thanh-tung-do.github.io</span>
         </a>
 
       </div>
@@ -1343,6 +1344,130 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  </script>
+
+  <!-- ─── CMS Content Loader ──────────────────────────────────────── -->
+  <script>
+  (async function () {
+    // SVG icons keyed by name (used for project cards and skill categories)
+    const PROJECT_ICONS = {
+      health: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>',
+      map:    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>',
+      shield: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+      chart:  '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>',
+      default:'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>'
+    };
+    const SKILL_ICONS = {
+      'bar-chart': '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>',
+      'code':      '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>',
+      'flask':     '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>',
+      'users':     '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>'
+    };
+    const GH_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>';
+
+    function esc(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    try {
+      const res = await fetch('/_data/content.json');
+      if (!res.ok) return;
+      const d = await res.json();
+
+      // ── Simple text fields ────────────────────────────────────────
+      document.querySelectorAll('[data-cms]').forEach(el => {
+        const keys = el.dataset.cms.split('.');
+        let val = d;
+        for (const k of keys) { val = val?.[k]; }
+        if (val != null) el.textContent = val;
+      });
+
+      // ── Bio paragraphs ────────────────────────────────────────────
+      if (d.about?.bio?.length) {
+        const bio = document.getElementById('about-bio');
+        if (bio) bio.innerHTML = d.about.bio.map(p => `<p>${esc(p)}</p>`).join('');
+      }
+
+      // ── Timeline ──────────────────────────────────────────────────
+      if (d.about?.timeline?.length) {
+        const tl = document.querySelector('[data-cms-render="about.timeline"]');
+        if (tl) tl.innerHTML = d.about.timeline.map(t => `
+          <div class="mini-timeline-item">
+            <div class="mini-timeline-role">${esc(t.role)}</div>
+            <div class="mini-timeline-org">${esc(t.org)}</div>
+            <div class="mini-timeline-date">${esc(t.date)}</div>
+          </div>`).join('');
+      }
+
+      // ── Stats ─────────────────────────────────────────────────────
+      if (d.about?.stats?.length) {
+        const strip = document.querySelector('[data-cms-render="about.stats"]');
+        if (strip) strip.innerHTML = d.about.stats.map(s => `
+          <div class="stat-card">
+            <div class="stat-number">${esc(s.number)}</div>
+            <div class="stat-label">${esc(s.label)}</div>
+          </div>`).join('');
+      }
+
+      // ── Homepage project cards ────────────────────────────────────
+      if (d.professionalProjects?.length) {
+        const grid = document.querySelector('[data-cms-render="home.projects"]');
+        if (grid) {
+          grid.innerHTML = d.professionalProjects.map(p => `
+            <div class="project-card"${p.showOnHome ? '' : ' style="display:none;"'}>
+              <div class="project-card-header">
+                <div class="project-icon">${PROJECT_ICONS[p.icon] || PROJECT_ICONS.default}</div>
+                <a href="${p.githubUrl ? esc(p.githubUrl) : '#'}" class="project-gh-link" title="View on GitHub" target="_blank" rel="noopener">${GH_ICON}</a>
+              </div>
+              <div class="project-org">${esc(p.org)}</div>
+              <h3 class="project-title">${esc(p.title)}</h3>
+              <p class="project-desc">${esc(p.descriptionShort)}</p>
+              <div class="tag-list">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+              <a href="${esc(p.link)}" class="project-read-more">View project →</a>
+            </div>`).join('');
+        }
+      }
+
+      // ── Skills ────────────────────────────────────────────────────
+      if (d.skills?.length) {
+        const grid = document.querySelector('[data-cms-render="skills"]');
+        if (grid) {
+          grid.innerHTML = d.skills.map(cat => `
+            <div class="skill-category">
+              <div class="skill-category-title">
+                ${SKILL_ICONS[cat.icon] || ''}
+                ${esc(cat.category)}
+              </div>
+              <div class="skill-pills">
+                ${cat.skills.map(s => `<span class="skill-pill">${esc(s)}</span>`).join('')}
+              </div>
+            </div>`).join('');
+        }
+      }
+
+      // ── Contact links ─────────────────────────────────────────────
+      if (d.contact) {
+        const em = document.getElementById('contact-email');
+        if (em && d.contact.email) {
+          em.href = `mailto:${d.contact.email}`;
+          em.querySelector('span').textContent = d.contact.email;
+        }
+        const li = document.getElementById('contact-linkedin');
+        if (li && d.contact.linkedinUrl) {
+          li.href = d.contact.linkedinUrl;
+          li.querySelector('span').textContent = d.contact.linkedin;
+        }
+        const gh = document.getElementById('contact-github');
+        if (gh && d.contact.githubUrl) {
+          gh.href = d.contact.githubUrl;
+          gh.querySelector('span').textContent = d.contact.github;
+        }
+      }
+
+    } catch (e) {
+      // Silently fall back to static HTML content
+    }
+  })();
   </script>
 
 </body>

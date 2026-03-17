@@ -1,0 +1,110 @@
+{
+  "hero": {
+    "availability": "Available for opportunities in Sydney & remote",
+    "name": "Ryan Do",
+    "title": "Business Insights Analyst · Sydney, NSW",
+    "tagline": "Turning complex business data into clear insights and practical decisions without confusion."
+  },
+  "about": {
+    "headline": "I am not just someone who knows Python or dashboards.",
+    "bio": [
+      "With over six years of experience across FMCG and education, I specialise in translating messy, high-volume data into clear commercial insight. My work has spanned national trade marketing operations at British American Tobacco, key account planning at PepsiCo, and teaching advanced data science methods to postgraduate students at the University of Technology Sydney.",
+      "I hold a Master of Business Analytics from UTS and am comfortable across the full analytical workflow, from writing SQL and Python to building Power BI dashboards and presenting findings to senior leadership. I'm drawn to problems where rigorous analysis can shift strategy, not just describe it."
+    ],
+    "timeline": [
+      { "role": "Data Science Tutor & Marker", "org": "University of Technology Sydney", "date": "Aug 2024 – Present" },
+      { "role": "Commercial & Business Analyst", "org": "PepsiCo", "date": "Aug 2021 – Jul 2022" },
+      { "role": "Trade Marketing Analyst", "org": "British American Tobacco", "date": "Jun 2017 – Dec 2020" }
+    ],
+    "stats": [
+      { "number": "6+",   "label": "Years of Industry Experience" },
+      { "number": "500+", "label": "Postgraduate Students Taught" },
+      { "number": "300K+","label": "Retail Outlets Covered" },
+      { "number": "69",   "label": "Key Account Negotiations Supported" }
+    ]
+  },
+  "professionalProjects": [
+    {
+      "id": "client-health-score",
+      "title": "Client Health Score Model",
+      "org": "PepsiCo",
+      "icon": "health",
+      "descriptionShort": "Developed a predictive scoring model to proactively surface at-risk key accounts during COVID-19. Incorporated sales trend, engagement frequency, and contract tenure signals to enable targeted retention actions - resulting in 100% Key Account retention across the portfolio.",
+      "descriptionFull": "A predictive scoring system built to proactively identify at-risk key accounts during COVID-19, enabling account managers to intervene before contracts were at risk — achieving 100% Key Account retention across the portfolio.",
+      "tags": ["Python", "Scikit-learn", "Excel", "Power BI"],
+      "tagsFull": ["Python", "Scikit-learn", "pandas", "Excel", "Power BI", "Predictive Modelling"],
+      "link": "projects/client-health-score.html",
+      "githubUrl": "",
+      "showOnHome": true
+    },
+    {
+      "id": "geospatial-rtm",
+      "title": "Geospatial Route-to-Market Optimisation",
+      "org": "British American Tobacco",
+      "icon": "map",
+      "descriptionShort": "Applied geospatial analytics to audit national territory allocation and identify distribution inefficiencies. Redesigned field routes using clustering and proximity analysis, delivering a 16% reduction in RTM costs across the national network.",
+      "descriptionFull": "A geospatial analytics project that audited national field territory allocation, identified distribution inefficiencies invisible to conventional reporting, and redesigned routes to deliver a 16% reduction in Route-to-Market costs.",
+      "tags": ["Python", "GeoPandas", "Pandas", "Matplotlib"],
+      "tagsFull": ["Python", "GeoPandas", "pandas", "Matplotlib", "K-Means Clustering", "Geospatial Analysis"],
+      "link": "projects/geospatial-rtm.html",
+      "githubUrl": "",
+      "showOnHome": true
+    },
+    {
+      "id": "sales-compliance",
+      "title": "Sales Compliance Detector",
+      "org": "British American Tobacco",
+      "icon": "shield",
+      "descriptionShort": "Built an unsupervised anomaly detection pipeline combining K-Means clustering with statistical outlier flagging to identify non-compliant sales patterns across a 300,000-outlet network. Protected incentive payouts and strengthened reporting integrity.",
+      "descriptionFull": "An unsupervised machine learning pipeline combining K-Means clustering with statistical outlier detection to identify non-compliant sales behaviour across a 300,000-outlet retail network, protecting incentive payouts and strengthening reporting integrity.",
+      "tags": ["Python", "K-Means", "Scikit-learn", "Power BI"],
+      "tagsFull": ["Python", "K-Means", "Scikit-learn", "pandas", "Power BI", "Anomaly Detection"],
+      "link": "projects/sales-compliance.html",
+      "githubUrl": "",
+      "showOnHome": true
+    },
+    {
+      "id": "power-bi-suite",
+      "title": "Power BI Trade Marketing Suite",
+      "org": "British American Tobacco",
+      "icon": "chart",
+      "descriptionShort": "Designed and automated a multi-report Power BI suite tracking distribution coverage, campaign execution, and outlet performance across ~300,000 retail outlets. Resolved systemic data discrepancies between field systems and head office, significantly improving reporting reliability.",
+      "descriptionFull": "Design and automation of a multi-report Power BI suite that replaced fragmented manual reporting across ~300,000 retail outlets — resolving longstanding data discrepancies between field systems and head office, and delivering reliable self-serve intelligence to the trade marketing team.",
+      "tags": ["Power BI", "DAX", "SQL", "Excel"],
+      "tagsFull": ["Power BI", "DAX", "SQL", "Excel", "Data Modelling", "ETL"],
+      "link": "projects/power-bi-suite.html",
+      "githubUrl": "",
+      "showOnHome": false
+    }
+  ],
+  "personalProjects": [],
+  "skills": [
+    {
+      "category": "BI & Reporting",
+      "icon": "bar-chart",
+      "skills": ["Power BI", "DAX", "Tableau", "Advanced Excel", "Pivot Tables", "Scenario Analysis", "Data Storytelling"]
+    },
+    {
+      "category": "Programming & Querying",
+      "icon": "code",
+      "skills": ["Python", "pandas", "NumPy", "Matplotlib", "scikit-learn", "SQL", "R", "SAS"]
+    },
+    {
+      "category": "Analytics Methods",
+      "icon": "flask",
+      "skills": ["Demand Forecasting", "Segmentation", "Clustering", "Anomaly Detection", "Geospatial Analysis", "Machine Learning", "ROI Modelling"]
+    },
+    {
+      "category": "Stakeholder & Communication",
+      "icon": "users",
+      "skills": ["Executive Reporting", "Requirements Gathering", "Cross-functional Collaboration", "Mentoring", "Presentation", "Strategic Briefing"]
+    }
+  ],
+  "contact": {
+    "email": "ryan.do.contact@gmail.com",
+    "linkedin": "linkedin.com/in/ryanism",
+    "linkedinUrl": "https://linkedin.com/in/ryanism",
+    "github": "thanh-tung-do.github.io",
+    "githubUrl": "https://thanh-tung-do.github.io"
+  }
+}

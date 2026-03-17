@@ -147,33 +147,10 @@
     </header>
 
     <div class="projects-body">
-      <div class="project-list">
-
-        <!-- Add personal projects here. Example structure:
-
-        <div class="project-item">
-          <div class="project-item-body">
-            <div class="project-item-meta">
-              <span class="type-badge">Machine Learning</span>
-            </div>
-            <h3>Project Title</h3>
-            <p>Short description of the project.</p>
-            <div class="tag-list">
-              <span class="tag">Python</span>
-              <span class="tag">pandas</span>
-            </div>
-          </div>
-          <div class="project-item-action">
-            <a href="projects/your-project.html" class="view-link">View details →</a>
-          </div>
-        </div>
-
-        -->
-
+      <div class="project-list" data-cms-render="personal.projects">
         <div class="empty-state">
           <p>Personal projects coming soon.</p>
         </div>
-
       </div>
     </div>
 
@@ -183,5 +160,35 @@
     <p>© 2025 Ryan Do &nbsp;·&nbsp; <a href="index.html">Back to portfolio</a> &nbsp;·&nbsp; <a href="Ryan-Do-CV.pdf" target="_blank" rel="noopener">Download CV</a></p>
   </footer>
 
+  <script>
+  (async function () {
+    function esc(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    try {
+      const res = await fetch('/_data/content.json');
+      if (!res.ok) return;
+      const d = await res.json();
+      const list = document.querySelector('[data-cms-render="personal.projects"]');
+      if (!list) return;
+      if (!d.personalProjects?.length) return; // keep "coming soon" placeholder
+      list.innerHTML = d.personalProjects.map(p => `
+        <div class="project-item">
+          <div class="project-item-body">
+            <div class="project-item-meta">
+              <span class="type-badge">${esc(p.type || 'Project')}</span>
+            </div>
+            <h3>${esc(p.title)}</h3>
+            <p>${esc(p.description)}</p>
+            <div class="tag-list">${(p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+          </div>
+          <div class="project-item-action">
+            ${p.link ? `<a href="${esc(p.link)}" class="view-link">View details →</a>` : ''}
+            ${p.githubUrl ? `<a href="${esc(p.githubUrl)}" class="view-link" target="_blank" rel="noopener">GitHub →</a>` : ''}
+          </div>
+        </div>`).join('');
+    } catch (e) {}
+  })();
+  </script>
 </body>
 </html>
