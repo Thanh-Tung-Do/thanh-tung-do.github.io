@@ -1,52 +1,69 @@
 ---
 title: "Website Blocker Chrome Extension"
 category: "side-projects"
-description: "A Chrome extension with Pomodoro timer, time-based scheduling, master password protection, multiple schedule support, and export/import functionality. Built to enforce focused work sessions without relying on third-party services."
-tags: ["JavaScript", "Chrome APIs", "Productivity", "Chrome Extension"]
+description: "A free, privacy-first Chrome extension for blocking distracting websites. No account, no subscription, no data collection — just configurable blocking with Pomodoro timer, day/time schedules, named block lists, and hard-lock protection. Built because every decent option on the Chrome Web Store either costs money or phones home."
+tags: ["JavaScript", "Chrome Extension", "Chrome APIs", "Productivity", "Web Crypto API"]
+github: "https://github.com/Thanh-Tung-Do/Website-Blocker"
 featured: true
 order: 7
 ---
 
-## Background
+## Why I Built This
 
-Built out of personal frustration with existing blockers that were either too simple (no scheduling) or too complex (required accounts and subscriptions). The goal was a self-contained Chrome extension that could be configured once and trusted to enforce work sessions reliably.
+Every Chrome extension that could reliably block distracting websites had the same problem: it either required an account, charged a subscription, or collected usage data. The free options were too basic to stick to — no scheduling, no password protection, easy to disable the moment willpower ran low.
 
-## Features
+I wanted something that worked offline, stored everything locally, cost nothing, and could not be trivially bypassed when the urge to procrastinate hit. So I built it.
 
-**Pomodoro timer**
+## What It Does
 
-Configurable work and break intervals with visual countdown in the popup. The timer automatically pauses blocking during break periods, then re-enables it when work time resumes.
+**Always Block** — a simple toggle. Flip it on and the listed sites are unreachable until you flip it off.
 
-**Time-based scheduling**
+**Pomodoro timer** — blocks sites during work phases and automatically unblocks during breaks. Configurable work and break intervals with a live countdown in the popup.
 
-Define blocking windows by day and time rather than relying on manual activation. For example: block YouTube and Reddit from 9am to 6pm on weekdays, but allow unrestricted access on weekends.
+**Schedule blocking** — define blocking windows by day of the week and time range. Block Twitter and Reddit from 9am to 6pm on weekdays, leave weekends unrestricted. Multiple named schedules supported so you can switch between "Deep Work", "Study", and "Default" contexts in one click.
 
-**Master password protection**
+**Hard Mode** — time-locked blocking that cannot be cancelled, even with the master password. Set a duration (hours and minutes) and the extension enforces it until the timer expires. Persists across browser restarts. For when you genuinely do not trust yourself.
 
-A master password prevents easy bypass. Without the password, the extension cannot be disabled or the blocked site list modified. This is primarily useful for preventing impulsive overrides during focused work sessions.
+**Peek (temporary access)** — need to check something quickly on a blocked site? Peek grants 5, 10, or 15 minutes of access with password confirmation, then automatically re-blocks. Disabled during Hard Mode.
 
-**Multiple named schedules**
+**Named block lists** — create separate lists (Social Media, News, Shopping) and assign different lists to different modes. A Private list stays hidden by default and is always active regardless of mode — for sites you want blocked but do not want visible in the main UI.
 
-Create separate schedules for different contexts, "Deep Work", "Study", "Default", and toggle between them with one click. Each schedule maintains its own site list and time windows.
+**Add sites via right-click** — right-click any page and select "Block this website" to add it to a list without opening the popup.
 
-**Export and import**
+<div class="result-grid">
+  <div class="result-card">
+    <span class="result-number">4</span>
+    <span class="result-label">Blocking modes (Always, Schedule, Pomodoro, Hard)</span>
+  </div>
+  <div class="result-card">
+    <span class="result-number">0</span>
+    <span class="result-label">Bytes of data sent to any server</span>
+  </div>
+  <div class="result-card">
+    <span class="result-number">Free</span>
+    <span class="result-label">No account, no subscription, no tracking</span>
+  </div>
+</div>
 
-Configuration exports as a JSON file for backup or sharing across devices. Import restores all schedules and settings.
+## Technical Implementation
 
-## Technical Approach
+Built on Chrome's **Manifest V3** extension platform using vanilla JavaScript — no frameworks, no build step, no dependencies.
 
-Built using Chrome's Manifest V3 extension APIs. Key implementation details:
+**Blocking engine** uses `declarativeNetRequest`, the MV3 replacement for `webRequest`. Matching rules are generated from the active block list and registered dynamically. Blocked requests are redirected to a local page with a motivational quote.
 
-**Blocking logic:** Runs in a service worker (background script) using `chrome.webRequest` to intercept navigation requests. Each intercepted request is checked against the active schedule's site list and the current time. Matching requests are redirected to a local blocked page.
+**Scheduling and Pomodoro timers** run via `chrome.alarms`, which fires reliably even when the service worker is inactive — solving the core MV3 problem where service workers can be terminated by Chrome at any time. Timer state is persisted to `chrome.storage` so the correct phase is restored on worker startup.
 
-**Storage:** All configuration stored in `chrome.storage.sync`, which persists across devices when signed into Chrome and survives extension updates.
+**Security** uses the Web Crypto API throughout: the master password is hashed with PBKDF2 (200,000 iterations, SHA-256) and the block list is encrypted with AES-GCM. Five failed password attempts trigger a 10-minute lockout. One password entry unlocks the session until the browser is closed.
 
-**Popup UI:** Vanilla JavaScript with no dependencies. Kept intentionally lightweight to minimise the extension's resource footprint.
+**Storage** uses `chrome.storage.local` only. Nothing leaves the browser.
 
-**Security:** The master password is stored as a hash (SHA-256 via the Web Crypto API) rather than plaintext. The hashed value is compared on verification.
+## Installation
 
-## Lessons
+The extension is not yet on the Chrome Web Store. To install it:
 
-Manifest V3's service worker model introduces a complication for timer-based features: service workers can be terminated by Chrome at any time. The timer state is persisted to `chrome.storage` on every tick and restored on worker startup, which handles the termination case but adds some complexity to the timer implementation.
+1. Download or clone the repository
+2. Open Chrome and navigate to `chrome://extensions`
+3. Enable **Developer mode** (top right toggle)
+4. Click **Load unpacked** and select the project folder
 
-The extension is available on GitHub. Chrome Web Store publication is planned.
+Chrome Web Store publication is planned for a future release.
