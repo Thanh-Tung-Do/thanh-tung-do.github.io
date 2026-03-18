@@ -22,9 +22,9 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
           </svg>
         </a>
         <div class="nav-dropdown">
-          <a href={`${isHome ? '' : '/'}#portfolio?category=analytics-visualization`}>Analytics &amp; Visualization</a>
-          <a href={`${isHome ? '' : '/'}#portfolio?category=data-science-ml`}>Data Science &amp; ML</a>
-          <a href={`${isHome ? '' : '/'}#portfolio?category=side-projects`}>Side Projects</a>
+          <a href="/?category=analytics-visualization#portfolio">Analytics &amp; Visualization</a>
+          <a href="/?category=data-science-ml#portfolio">Data Science &amp; ML</a>
+          <a href="/?category=side-projects#portfolio">Side Projects</a>
         </div>
       </div>
 
@@ -42,9 +42,9 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <a href={a('#about')}>About</a>
     <a href={a('#portfolio')}>Portfolio</a>
-    <a href={`${isHome ? '' : '/'}#portfolio?category=analytics-visualization`} class="mobile-sub">Analytics &amp; Visualization</a>
-    <a href={`${isHome ? '' : '/'}#portfolio?category=data-science-ml`} class="mobile-sub">Data Science &amp; ML</a>
-    <a href={`${isHome ? '' : '/'}#portfolio?category=side-projects`} class="mobile-sub">Side Projects</a>
+    <a href="/?category=analytics-visualization#portfolio" class="mobile-sub">Analytics &amp; Visualization</a>
+    <a href="/?category=data-science-ml#portfolio" class="mobile-sub">Data Science &amp; ML</a>
+    <a href="/?category=side-projects#portfolio" class="mobile-sub">Side Projects</a>
     <a href={a('#experience')}>Experience</a>
     <a href="/blog">Blog</a>
     <a href={a('#contact')}>Contact</a>

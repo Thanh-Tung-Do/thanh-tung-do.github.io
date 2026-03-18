@@ -38,7 +38,9 @@ const categoryLabel: Record<string, string> = {
       <header class="project-header fade-in">
         <div class="project-meta">
           {organisation && <span class="org-badge">{organisation}</span>}
-          <span class="tag">{categoryLabel[Astro.props.category] ?? Astro.props.category}</span>
+          <a href={`/?category=${Astro.props.category}#portfolio`} class="tag category-link">
+            {categoryLabel[Astro.props.category] ?? Astro.props.category}
+          </a>
         </div>
         <h1>{title}</h1>
         <p class="project-lead">{description}</p>
@@ -128,6 +130,14 @@ const categoryLabel: Record<string, string> = {
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.04em;
+  }
+  .category-link {
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+  }
+  .category-link:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
   }
   .project-header h1 { margin-bottom: 16px; }
   .project-lead {
