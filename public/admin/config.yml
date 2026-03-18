@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Thanh-Tung-Do/thanh-tung-do.github.io
   branch: main
+  base_url: https://ryando-cms-oauth.ryan-do-contact.workers.dev
+  auth_endpoint: /auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

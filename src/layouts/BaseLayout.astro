@@ -44,9 +44,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <title>{title}</title>
-
-  <!-- Netlify Identity — handles invite/password-reset tokens -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <slot />
@@ -58,17 +55,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   </button>
 
   <script is:inline>
-    // Netlify Identity redirect after login
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', function(user) {
-        if (!user) {
-          window.netlifyIdentity.on('login', function() {
-            document.location.href = '/admin/';
-          });
-        }
-      });
-    }
-
     // Back-to-top
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', function() {
