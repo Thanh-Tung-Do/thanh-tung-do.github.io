@@ -1,0 +1,83 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+
+  # ── Projects ──────────────────────────────────────────────────
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Analytics and Visualization", value: "analytics-visualization" }
+          - { label: "Data Science and ML",          value: "data-science-ml" }
+          - { label: "Side Projects",                value: "side-projects" }
+      - { label: "Organisation (optional)", name: "organisation", widget: "string", required: false,
+          hint: "e.g. PepsiCo, British American Tobacco. Leave blank for personal projects." }
+      - { label: "Short Description", name: "description", widget: "text",
+          hint: "1-2 sentences shown on project cards. No em dashes." }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        allow_add: true
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "GitHub URL", name: "github", widget: "string", required: false }
+      - { label: "Live Demo URL", name: "live", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Display order (lower = earlier)", name: "order", widget: "number", default: 99 }
+      - { label: "Full write-up", name: "body", widget: "markdown" }
+
+  # ── Experience ────────────────────────────────────────────────
+  - name: "experience"
+    label: "Experience"
+    folder: "src/content/experience"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Job Title", name: "title", widget: "string" }
+      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Start Date", name: "startDate", widget: "string",
+          hint: "e.g. Aug 2024" }
+      - { label: "End Date", name: "endDate", widget: "string", default: "Present",
+          hint: "e.g. Dec 2020. Use Present for current role." }
+      - { label: "Display order (1 = most recent)", name: "order", widget: "number" }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  # ── Blog Posts ────────────────────────────────────────────────
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text",
+          hint: "1-2 sentence summary shown on the blog listing page." }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        allow_add: true
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Data Tutorial",    value: "data-tutorial" }
+          - { label: "Career Journey",   value: "career-journey" }
+          - { label: "Project Write-up", value: "project-writeup" }
+          - { label: "Personal",         value: "personal" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Draft (hide from live site)", name: "draft", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }

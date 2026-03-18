@@ -1,0 +1,206 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  date: Date;
+  excerpt: string;
+  tags: string[];
+  category: string;
+  wordCount: number;
+}
+
+const { title, date, excerpt, tags, wordCount } = Astro.props;
+
+const readingTime = Math.max(1, Math.round(wordCount / 200));
+
+const formattedDate = date.toLocaleDateString('en-AU', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} — Ryan Do`} description={excerpt}>
+  <nav class="detail-nav">
+    <div class="container">
+      <a href="/" class="nav-logo">Ryan Do</a>
+      <a href="/blog" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        All Posts
+      </a>
+    </div>
+  </nav>
+
+  <main class="post-main">
+    <div class="container">
+      <article>
+        <header class="post-header fade-in">
+          <div class="post-meta">
+            <span class="post-date">{formattedDate}</span>
+            <span class="post-dot">·</span>
+            <span class="post-read">{readingTime} min read</span>
+          </div>
+          <h1>{title}</h1>
+          <p class="post-excerpt">{excerpt}</p>
+          <div class="post-tags">
+            {tags.map(t => <span class="tag">{t}</span>)}
+          </div>
+        </header>
+
+        <div class="post-body fade-in">
+          <slot />
+        </div>
+      </article>
+
+      <div class="post-footer fade-in">
+        <a href="/blog" class="btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to Writing
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .detail-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px 0;
+  }
+  .detail-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    transition: color var(--transition);
+  }
+  .back-link:hover { color: var(--color-accent); }
+
+  .post-main { padding: 64px 0 96px; }
+
+  .post-header {
+    max-width: var(--max-w-prose);
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .post-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin-bottom: 20px;
+  }
+  .post-dot { opacity: 0.4; }
+  .post-header h1 { margin-bottom: 16px; }
+  .post-excerpt {
+    font-size: 1.1rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .post-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Prose */
+  .post-body {
+    max-width: var(--max-w-prose);
+    margin: 0 auto;
+  }
+  .post-body :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 48px 0 16px;
+    color: var(--color-text);
+  }
+  .post-body :global(h3) {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 32px 0 12px;
+  }
+  .post-body :global(p) {
+    color: var(--color-muted);
+    margin-bottom: 20px;
+    line-height: 1.85;
+    font-size: 1.05rem;
+  }
+  .post-body :global(ul), .post-body :global(ol) {
+    margin: 0 0 20px 20px;
+    list-style: disc;
+  }
+  .post-body :global(li) {
+    color: var(--color-muted);
+    margin-bottom: 8px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+  }
+  .post-body :global(strong) { color: var(--color-text); font-weight: 600; }
+  .post-body :global(a) { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+  .post-body :global(code) {
+    font-size: 0.88em;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+  .post-body :global(pre) {
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+  .post-body :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.9em;
+  }
+  .post-body :global(blockquote) {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 20px;
+    margin: 0 0 20px;
+    font-style: italic;
+    color: var(--color-muted);
+  }
+  .post-body :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 40px 0;
+  }
+  .post-body :global(img) {
+    border-radius: var(--radius);
+    margin: 24px 0;
+    box-shadow: var(--shadow-md);
+  }
+
+  .post-footer {
+    max-width: var(--max-w-prose);
+    margin: 56px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+  }
+</style>

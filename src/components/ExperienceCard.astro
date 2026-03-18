@@ -1,0 +1,119 @@
+---
+interface Props {
+  title: string;
+  company: string;
+  startDate: string;
+  endDate: string;
+}
+
+const { title, company, startDate, endDate } = Astro.props;
+---
+
+<div class="exp-card">
+  <div class="exp-dot"></div>
+  <div class="exp-content">
+    <div class="exp-header">
+      <div>
+        <p class="exp-company">{company}</p>
+        <h3 class="exp-title">{title}</h3>
+      </div>
+      <span class="exp-dates">{startDate} &ndash; {endDate}</span>
+    </div>
+    <div class="exp-body"><slot /></div>
+  </div>
+</div>
+
+<style>
+  .exp-card {
+    position: relative;
+    padding-left: 28px;
+    padding-bottom: 40px;
+  }
+  .exp-card:last-child { padding-bottom: 0; }
+
+  /* Timeline line */
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 16px;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+  .exp-card:last-child::before { display: none; }
+
+  .exp-dot {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid var(--color-bg);
+    box-shadow: 0 0 0 2px var(--color-accent);
+  }
+
+  .exp-content {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .exp-company {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 4px;
+  }
+  .exp-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  .exp-dates {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .exp-body :global(p) {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .exp-body :global(ul) { list-style: none; padding: 0; margin: 0; }
+  .exp-body :global(li) {
+    position: relative;
+    padding-left: 16px;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+  .exp-body :global(li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+</style>

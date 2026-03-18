@@ -1,0 +1,168 @@
+---
+---
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid fade-in">
+      <div class="about-left">
+        <span class="section-label">About</span>
+        <h2>More than dashboards and Python scripts.</h2>
+        <p>
+          I am a business analytics professional with six years of experience across FMCG
+          commercial functions at British American Tobacco and PepsiCo. My work has spanned
+          territory optimisation, key account management, sales compliance, and BI reporting
+          across retail networks covering 300,000 outlets.
+        </p>
+        <p>
+          Currently, I teach data science at the University of Technology Sydney while building
+          deeper expertise in machine learning and end-to-end ML deployment. I bring both the
+          technical depth to build models and the commercial context to make them useful.
+        </p>
+
+        <div class="education">
+          <span class="section-label">Education</span>
+          <p class="edu-title">Master of Business Analytics</p>
+          <p class="edu-sub">University of Technology Sydney</p>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <span class="section-label">Skills &amp; Tools</span>
+
+        <div class="skill-group">
+          <p class="skill-group-label">Languages &amp; Tools</p>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">DAX</span>
+            <span class="tag">VBA</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-label">Visualization</p>
+          <div class="skill-tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-label">ML &amp; Data Science</p>
+          <div class="skill-tags">
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-label">Other</p>
+          <div class="skill-tags">
+            <span class="tag">Excel (advanced)</span>
+            <span class="tag">Git</span>
+            <span class="tag">Jupyter</span>
+            <span class="tag">MLflow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="stats-strip fade-in">
+      <div class="stat-card">
+        <span class="stat-number">6+</span>
+        <span class="stat-label">Years industry experience</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Postgraduate students taught</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">300K+</span>
+        <span class="stat-label">Retail outlets covered</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">69</span>
+        <span class="stat-label">Key account negotiations supported</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #about { background: var(--color-surface); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+
+  .about-left h2 { margin: 8px 0 20px; }
+  .about-left p {
+    color: var(--color-muted);
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+
+  .education { margin-top: 32px; }
+  .edu-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 8px 0 2px;
+  }
+  .edu-sub { color: var(--color-muted); font-size: 0.9rem; }
+
+  /* Skills */
+  .about-right { padding-top: 28px; }
+  .skill-group { margin-bottom: 20px; }
+  .skill-group-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* Stats */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .stat-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .stat-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .stats-strip { grid-template-columns: 1fr; }
+  }
+</style>

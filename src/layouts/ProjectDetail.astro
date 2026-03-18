@@ -1,0 +1,231 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  organisation?: string;
+  description: string;
+  tags: string[];
+  github?: string;
+  live?: string;
+  category: string;
+}
+
+const { title, organisation, description, tags, github, live } = Astro.props;
+
+const categoryLabel: Record<string, string> = {
+  'analytics-visualization': 'Analytics & Visualization',
+  'data-science-ml': 'Data Science & ML',
+  'side-projects': 'Side Projects',
+};
+---
+
+<BaseLayout title={`${title} — Ryan Do`} description={description}>
+  <nav class="detail-nav">
+    <div class="container">
+      <a href="/" class="nav-logo">Ryan Do</a>
+      <a href="/#portfolio" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back to Portfolio
+      </a>
+    </div>
+  </nav>
+
+  <main class="project-main">
+    <div class="container">
+      <header class="project-header fade-in">
+        <div class="project-meta">
+          {organisation && <span class="org-badge">{organisation}</span>}
+          <span class="tag">{categoryLabel[Astro.props.category] ?? Astro.props.category}</span>
+        </div>
+        <h1>{title}</h1>
+        <p class="project-lead">{description}</p>
+        <div class="project-tags">
+          {tags.map(t => <span class="tag">{t}</span>)}
+        </div>
+        <div class="project-links">
+          {live && (
+            <a href={live} target="_blank" rel="noopener noreferrer" class="btn-primary">
+              View Live
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          )}
+          {github && (
+            <a href={github} target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+          )}
+        </div>
+      </header>
+
+      <div class="project-body fade-in">
+        <slot />
+      </div>
+    </div>
+  </main>
+
+  <footer class="detail-footer">
+    <div class="container">
+      <p>&copy; 2026 Ryan Do</p>
+      <a href="/#portfolio">Back to Portfolio</a>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  /* Nav */
+  .detail-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px 0;
+  }
+  .detail-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--color-text);
+  }
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    transition: color var(--transition);
+  }
+  .back-link:hover { color: var(--color-accent); }
+
+  /* Project header */
+  .project-main { padding: 64px 0 96px; }
+  .project-header { max-width: 760px; margin-bottom: 56px; }
+  .project-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .org-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    background: var(--color-accent-lt);
+    color: var(--color-accent);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .project-header h1 { margin-bottom: 16px; }
+  .project-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 20px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* Body prose */
+  .project-body {
+    max-width: 760px;
+  }
+  .project-body :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 40px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-accent-lt);
+  }
+  .project-body :global(h3) {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 24px 0 8px;
+  }
+  .project-body :global(p) {
+    color: var(--color-muted);
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+  .project-body :global(ul) {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+  }
+  .project-body :global(ul li) {
+    position: relative;
+    padding-left: 20px;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+  .project-body :global(ul li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .project-body :global(strong) { color: var(--color-text); font-weight: 600; }
+
+  /* Result grid (inline HTML in Markdown) */
+  .project-body :global(.result-grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .project-body :global(.result-card) {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .project-body :global(.result-number) {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .project-body :global(.result-label) {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+  }
+
+  /* Footer */
+  .detail-footer {
+    background: var(--color-text);
+    padding: 24px 0;
+  }
+  .detail-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .detail-footer p, .detail-footer a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+  }
+  .detail-footer a:hover { color: rgba(255,255,255,0.9); }
+</style>

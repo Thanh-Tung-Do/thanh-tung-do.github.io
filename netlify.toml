@@ -1,9 +1,30 @@
 [build]
-  publish = "."
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
 
-[context.production]
-  [context.production.environment]
-    NODE_VERSION = "18"
+# 301 redirects for old HTML page URLs
+[[redirects]]
+  from = "/projects/client-health-score.html"
+  to   = "/projects/client-health-score"
+  status = 301
+
+[[redirects]]
+  from = "/projects/geospatial-rtm.html"
+  to   = "/projects/geospatial-rtm"
+  status = 301
+
+[[redirects]]
+  from = "/projects/sales-compliance.html"
+  to   = "/projects/sales-compliance"
+  status = 301
+
+[[redirects]]
+  from = "/projects/power-bi-suite.html"
+  to   = "/projects/power-bi-suite"
+  status = 301

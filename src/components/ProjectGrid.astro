@@ -1,0 +1,152 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+
+const categories = [
+  { id: 'all', label: 'All' },
+  { id: 'analytics-visualization', label: 'Analytics & Visualization' },
+  { id: 'data-science-ml', label: 'Data Science & ML' },
+  { id: 'side-projects', label: 'Side Projects' },
+];
+---
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Portfolio</span>
+      <h2>Selected Work</h2>
+      <p class="section-sub">
+        Analytics, machine learning, and side projects from six years of commercial practice
+        and personal exploration.
+      </p>
+    </div>
+
+    <div class="filter-tabs fade-in" role="tablist" aria-label="Filter projects by category">
+      {categories.map(cat => (
+        <button
+          class="filter-tab"
+          data-filter-tab={cat.id}
+          role="tab"
+          aria-selected={cat.id === 'all' ? 'true' : 'false'}
+        >
+          {cat.label}
+        </button>
+      ))}
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+      {projects.map(project => (
+        <div data-category={project.data.category} class="card-wrapper">
+          <ProjectCard
+            title={project.data.title}
+            organisation={project.data.organisation}
+            description={project.data.description}
+            tags={project.data.tags}
+            slug={project.slug}
+            github={project.data.github}
+            live={project.data.live}
+            thumbnail={project.data.thumbnail}
+            category={project.data.category}
+          />
+        </div>
+      ))}
+    </div>
+
+    <p class="empty-state" id="empty-state" aria-live="polite">No projects in this category yet. More coming soon.</p>
+  </div>
+</section>
+
+<style>
+  #portfolio { }
+
+  .section-header { margin-bottom: 40px; }
+  .section-header h2 { margin: 8px 0 12px; }
+  .section-sub { color: var(--color-muted); max-width: 560px; }
+
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .filter-tab {
+    padding: 8px 18px;
+    border: 1.5px solid var(--color-border);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    background: transparent;
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+  .filter-tab:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .filter-tab[aria-selected="true"] {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .card-wrapper[hidden] { display: none; }
+
+  .empty-state {
+    display: none;
+    text-align: center;
+    padding: 48px;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+  .empty-state.visible { display: block; }
+
+  @media (max-width: 960px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .filter-tabs { gap: 6px; }
+    .filter-tab { font-size: 0.8rem; padding: 6px 14px; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var tabs = document.querySelectorAll('[data-filter-tab]');
+  var cards = document.querySelectorAll('[data-category]');
+  var emptyState = document.getElementById('empty-state');
+
+  function filter(category) {
+    var visibleCount = 0;
+    cards.forEach(function (card) {
+      var show = category === 'all' || card.dataset.category === category;
+      card.hidden = !show;
+      if (show) visibleCount++;
+    });
+    tabs.forEach(function (tab) {
+      tab.setAttribute('aria-selected', tab.dataset.filterTab === category ? 'true' : 'false');
+    });
+    emptyState.classList.toggle('visible', visibleCount === 0);
+  }
+
+  // Read URL param on load
+  var initial = new URLSearchParams(window.location.search).get('category') || 'all';
+  filter(initial);
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      filter(tab.dataset.filterTab);
+    });
+  });
+})();
+</script>

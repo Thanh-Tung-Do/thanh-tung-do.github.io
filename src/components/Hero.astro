@@ -1,0 +1,232 @@
+---
+---
+
+<section id="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="hero-photo">
+      <img
+        src="/images/profile.jpg"
+        alt="Ryan Do, Business Insights Analyst"
+        width="144"
+        height="144"
+        loading="eager"
+      />
+    </div>
+    <span class="hero-badge">
+      <span class="badge-dot"></span>
+      Available for opportunities in Sydney and remote
+    </span>
+    <h1>Ryan Do</h1>
+    <p class="hero-role">Business Insights Analyst &nbsp;·&nbsp; Sydney, NSW</p>
+    <p class="hero-intro">
+      Six years of FMCG commercial analytics across BAT and PepsiCo, a Master of Business
+      Analytics from UTS, and a current role teaching data science to postgraduate students.
+      I turn messy, high-volume data into clear commercial decisions.
+    </p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn-primary">View Portfolio</a>
+      <a href="/assets/Ryan-Do-CV.pdf" download class="btn-secondary">Download CV</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://linkedin.com/in/ryanism" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/Thanh-Tung-Do" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="mailto:ryan.do.contact@gmail.com" aria-label="Email">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 96px 0;
+  }
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  #hero .container {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+  }
+
+  /* Photo */
+  .hero-photo {
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 28px;
+    box-shadow:
+      0 0 0 4px var(--color-bg),
+      0 0 0 7px var(--color-accent),
+      var(--shadow-lg);
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: var(--color-accent-lt);
+    border: 1px solid rgba(26,92,74,.2);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+  }
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Text */
+  #hero h1 { margin-bottom: 8px; }
+  .hero-role {
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    margin-bottom: 20px;
+  }
+  .hero-intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-muted);
+    max-width: 580px;
+    margin: 0 auto 32px;
+  }
+
+  /* CTAs */
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  /* Socials */
+  .hero-socials {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+  .hero-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
+  }
+  .hero-socials a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-accent-lt);
+  }
+
+  @media (max-width: 540px) {
+    .hero-photo { width: 120px; height: 120px; }
+    #hero h1 { font-size: 2.2rem; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  var ctx = canvas.getContext('2d');
+  var ACCENT = '26,92,74';
+  var CONNECT_DIST = 130;
+  var SPEED = 0.35;
+  var particles = [];
+
+  function resize() {
+    var hero = document.getElementById('hero');
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+
+  function initParticles() {
+    particles = [];
+    var count = Math.min(Math.floor((canvas.width * canvas.height) / 14000), 55);
+    for (var i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * SPEED,
+        vy: (Math.random() - 0.5) * SPEED,
+        r: Math.random() * 1.5 + 1.5
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x;
+        var dy = particles[i].y - particles[j].y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < CONNECT_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(' + ACCENT + ',' + (1 - d / CONNECT_DIST) * 0.2 + ')';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+    particles.forEach(function (p) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + ACCENT + ',0.4)';
+      ctx.fill();
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  initParticles();
+  draw();
+  window.addEventListener('resize', function () { resize(); initParticles(); }, { passive: true });
+})();
+</script>
