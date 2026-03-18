@@ -1,5 +1,6 @@
 ---
 title: "Learning Rate & Optimizer Explorer"
+organisation: "University of Technology Sydney"
 category: "side-projects"
 description: "An interactive classroom tool that lets students navigate a real loss surface in 1D and 3D, watching SGD, Momentum, RMSProp, and Adam converge — or fail to — as they tune the learning rate and schedule in real time. Built as a teaching aid for UTS data science students."
 tags: ["JavaScript", "Three.js", "Data Visualisation", "Teaching", "Optimisation", "Deep Learning"]
