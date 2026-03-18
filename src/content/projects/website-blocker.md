@@ -3,6 +3,7 @@ title: "Website Blocker Chrome Extension"
 category: "side-projects"
 description: "A free, privacy-first Chrome extension for blocking distracting websites. No account, no subscription, no data collection — just configurable blocking with Pomodoro timer, day/time schedules, named block lists, and hard-lock protection. Built because every decent option on the Chrome Web Store either costs money or phones home."
 tags: ["JavaScript", "Chrome Extension", "Chrome APIs", "Productivity", "Web Crypto API"]
+thumbnail: "/images/projects/website-blocker-chrome-extension-banner.png"
 github: "https://github.com/Thanh-Tung-Do/Website-Blocker"
 featured: true
 order: 7
