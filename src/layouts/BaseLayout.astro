@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -42,9 +44,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <title>{title}</title>
-
-  <!-- Global styles -->
-  <link rel="stylesheet" href="/src/styles/global.css" />
 
   <!-- Netlify Identity — handles invite/password-reset tokens -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
