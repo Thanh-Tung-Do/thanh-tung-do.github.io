@@ -1,0 +1,17 @@
+{
+  "hero": {
+    "badge": "Available for opportunities in Sydney and remote",
+    "intro": "Six years of FMCG commercial analytics across BAT and PepsiCo, a Master of Business Analytics from UTS, and a current role teaching data science to postgraduate students. I turn messy, high-volume data into clear commercial decisions."
+  },
+  "about": {
+    "heading": "More than dashboards and Python scripts.",
+    "bio1": "I am a business analytics professional with six years of experience across FMCG commercial functions at British American Tobacco and PepsiCo. My work has spanned territory optimisation, key account management, sales compliance, and BI reporting across retail networks covering 300,000 outlets.",
+    "bio2": "Currently, I teach data science at the University of Technology Sydney while building deeper expertise in machine learning and end-to-end ML deployment. I bring both the technical depth to build models and the commercial context to make them useful."
+  },
+  "stats": [
+    { "number": "6+",   "label": "Years industry experience" },
+    { "number": "500+", "label": "Postgraduate students taught" },
+    { "number": "300K+","label": "Retail outlets covered" },
+    { "number": "69",   "label": "Key account negotiations supported" }
+  ]
+}

@@ -1,4 +1,5 @@
 ---
+import site from '../data/site.json';
 ---
 
 <section id="about">
@@ -6,18 +7,9 @@
     <div class="about-grid fade-in">
       <div class="about-left">
         <span class="section-label">About</span>
-        <h2>More than dashboards and Python scripts.</h2>
-        <p>
-          I am a business analytics professional with six years of experience across FMCG
-          commercial functions at British American Tobacco and PepsiCo. My work has spanned
-          territory optimisation, key account management, sales compliance, and BI reporting
-          across retail networks covering 300,000 outlets.
-        </p>
-        <p>
-          Currently, I teach data science at the University of Technology Sydney while building
-          deeper expertise in machine learning and end-to-end ML deployment. I bring both the
-          technical depth to build models and the commercial context to make them useful.
-        </p>
+        <h2>{site.about.heading}</h2>
+        <p>{site.about.bio1}</p>
+        <p>{site.about.bio2}</p>
 
         <div class="education">
           <span class="section-label">Education</span>
@@ -71,22 +63,12 @@
 
     <!-- Stats strip -->
     <div class="stats-strip fade-in">
-      <div class="stat-card">
-        <span class="stat-number">6+</span>
-        <span class="stat-label">Years industry experience</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">500+</span>
-        <span class="stat-label">Postgraduate students taught</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">300K+</span>
-        <span class="stat-label">Retail outlets covered</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">69</span>
-        <span class="stat-label">Key account negotiations supported</span>
-      </div>
+      {site.stats.map(stat => (
+        <div class="stat-card">
+          <span class="stat-number">{stat.number}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
     </div>
   </div>
 </section>

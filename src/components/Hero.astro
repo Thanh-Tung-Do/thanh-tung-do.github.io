@@ -1,4 +1,5 @@
 ---
+import site from '../data/site.json';
 ---
 
 <section id="hero">
@@ -15,15 +16,11 @@
     </div>
     <span class="hero-badge">
       <span class="badge-dot"></span>
-      Available for opportunities in Sydney and remote
+      {site.hero.badge}
     </span>
     <h1>Ryan Do</h1>
     <p class="hero-role">Business Insights Analyst &nbsp;·&nbsp; Sydney, NSW</p>
-    <p class="hero-intro">
-      Six years of FMCG commercial analytics across BAT and PepsiCo, a Master of Business
-      Analytics from UTS, and a current role teaching data science to postgraduate students.
-      I turn messy, high-volume data into clear commercial decisions.
-    </p>
+    <p class="hero-intro">{site.hero.intro}</p>
     <div class="hero-ctas">
       <a href="#portfolio" class="btn-primary">View Portfolio</a>
       <a href="/assets/Ryan-Do-CV.pdf" download class="btn-secondary">Download CV</a>

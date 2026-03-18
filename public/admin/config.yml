@@ -7,6 +7,37 @@ public_folder: "/images/uploads"
 
 collections:
 
+  # ── Site Content (hero, about, stats) ─────────────────────────
+  - name: "settings"
+    label: "Site Content"
+    files:
+      - name: "site"
+        label: "Hero & About"
+        file: "src/data/site.json"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Availability badge text", name: "badge", widget: "string",
+                  hint: "Shown in the green badge at the top of the hero section." }
+              - { label: "Introduction paragraph", name: "intro", widget: "text",
+                  hint: "2-3 sentences shown below your name. No em dashes." }
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Bio paragraph 1", name: "bio1", widget: "text" }
+              - { label: "Bio paragraph 2", name: "bio2", widget: "text" }
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            hint: "The 4 stat cards below the bio. Keep to 4 items."
+            fields:
+              - { label: "Number", name: "number", widget: "string", hint: "e.g. 6+, 300K+" }
+              - { label: "Label", name: "label", widget: "string", hint: "e.g. Years industry experience" }
+
   # ── Projects ──────────────────────────────────────────────────
   - name: "projects"
     label: "Projects"
