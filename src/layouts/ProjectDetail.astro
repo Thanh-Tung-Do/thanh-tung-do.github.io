@@ -42,8 +42,8 @@ const categoryLabel: Record<string, string> = {
         </div>
         <h1>{title}</h1>
         <p class="project-lead">{description}</p>
-        <div class="project-tags">
-          {tags.map(t => <span class="tag">{t}</span>)}
+        <div class="project-tabs">
+          {tags.map(t => <span class="proj-tab">{t}</span>)}
         </div>
         <div class="project-links">
           {live && (
@@ -134,7 +134,28 @@ const categoryLabel: Record<string, string> = {
     color: var(--color-muted);
     margin-bottom: 20px;
   }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .project-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 28px;
+    border-bottom: 2px solid var(--color-border);
+  }
+  .proj-tab {
+    padding: 8px 18px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    cursor: default;
+    transition: color var(--transition), border-color var(--transition);
+    white-space: nowrap;
+  }
+  .proj-tab:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
   .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
   /* Body prose */
