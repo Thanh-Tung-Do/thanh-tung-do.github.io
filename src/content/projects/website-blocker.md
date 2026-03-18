@@ -6,7 +6,7 @@ tags: ["JavaScript", "Chrome Extension", "Chrome APIs", "Productivity", "Web Cry
 thumbnail: "/images/projects/website-blocker-chrome-extension-banner.png"
 github: "https://github.com/Thanh-Tung-Do/Website-Blocker"
 featured: true
-order: 7
+order: 3
 ---
 
 ## Why I Built This

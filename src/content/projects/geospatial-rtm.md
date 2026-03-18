@@ -5,7 +5,7 @@ category: "analytics-visualization"
 description: "A geospatial analytics project that audited national field territory allocation, identified distribution inefficiencies invisible to conventional reporting, and redesigned routes to deliver a 16% reduction in Route-to-Market costs."
 tags: ["Python", "GeoPandas", "pandas", "Matplotlib", "K-Means Clustering", "Geospatial Analysis"]
 featured: true
-order: 2
+order: 7
 ---
 
 ## The Problem

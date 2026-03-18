@@ -5,7 +5,7 @@ category: "analytics-visualization"
 description: "A predictive scoring system built to proactively identify at-risk key accounts during COVID-19, enabling account managers to intervene before contracts were lost and achieving 100% Key Account retention across the portfolio."
 tags: ["Python", "Scikit-learn", "pandas", "Excel", "Power BI", "Predictive Modelling"]
 featured: true
-order: 1
+order: 6
 ---
 
 ## The Challenge

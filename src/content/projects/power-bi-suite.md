@@ -5,7 +5,7 @@ category: "analytics-visualization"
 description: "Design and automation of a multi-report Power BI suite that replaced fragmented manual reporting across 300,000 retail outlets, resolving longstanding data discrepancies between field systems and head office."
 tags: ["Power BI", "DAX", "SQL", "Excel", "Data Modelling", "ETL"]
 featured: false
-order: 3
+order: 8
 ---
 
 ## Context

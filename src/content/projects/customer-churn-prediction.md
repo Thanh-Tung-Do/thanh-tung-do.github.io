@@ -7,7 +7,7 @@ thumbnail: "/images/projects/Telco-customer-churn-prediction-machine-learning-so
 github: "https://github.com/Thanh-Tung-Do/Telco-Customer-Churn-End-to-End-ML-Product"
 live: "https://telco-customer-churn-end-to-end-ml.streamlit.app/"
 featured: true
-order: 6
+order: 1
 ---
 
 ## The Business Problem

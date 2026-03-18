@@ -6,7 +6,7 @@ description: "An interactive classroom tool that lets students navigate a real l
 tags: ["JavaScript", "Three.js", "Data Visualisation", "Teaching", "Optimisation", "Deep Learning"]
 live: "/tools/optimizer-explorer.html"
 featured: true
-order: 8
+order: 4
 ---
 
 ## Why I Built This

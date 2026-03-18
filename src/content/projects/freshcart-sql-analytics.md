@@ -6,7 +6,7 @@ tags: ["SQL", "DuckDB", "Python", "Cohort Analysis", "RFM Segmentation", "E-Comm
 thumbnail: "/images/projects/fresh-cart-sql-analytics-banner.png"
 github: "https://github.com/Thanh-Tung-Do/FreshCart-Australia-SQL-Analytics-for-Grocery-E-Commerce"
 featured: true
-order: 5
+order: 2
 ---
 
 ## The Scenario

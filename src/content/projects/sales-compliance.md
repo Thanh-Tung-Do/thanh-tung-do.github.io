@@ -5,7 +5,7 @@ category: "data-science-ml"
 description: "An unsupervised ML pipeline combining K-Means clustering with statistical outlier detection to identify non-compliant sales behaviour across a 300,000-outlet retail network, protecting incentive payouts and strengthening reporting integrity."
 tags: ["Python", "K-Means", "Scikit-learn", "pandas", "Power BI", "Anomaly Detection"]
 featured: true
-order: 4
+order: 9
 ---
 
 ## Background
