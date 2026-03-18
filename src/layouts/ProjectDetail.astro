@@ -42,9 +42,9 @@ const categoryLabel: Record<string, string> = {
         </div>
         <h1>{title}</h1>
         <p class="project-lead">{description}</p>
-        <div class="project-tabs">
+        <div class="project-tags">
           {tags.map(t => (
-            <a href={`/tags/${t.toLowerCase().replace(/\s+/g, '-')}`} class="proj-tab">{t}</a>
+            <a href={`/tags/${t.toLowerCase().replace(/\s+/g, '-')}`} class="tag tag-link">{t}</a>
           ))}
         </div>
         <div class="project-links">
@@ -136,27 +136,26 @@ const categoryLabel: Record<string, string> = {
     color: var(--color-muted);
     margin-bottom: 20px;
   }
-  .project-tabs {
+  .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0;
+    gap: 8px;
     margin-bottom: 28px;
-    border-bottom: 2px solid var(--color-border);
   }
-  .proj-tab {
-    padding: 8px 18px;
+  .project-tags .tag {
     font-size: 0.82rem;
-    font-weight: 600;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     color: var(--color-muted);
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    cursor: default;
-    transition: color var(--transition), border-color var(--transition);
-    white-space: nowrap;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
   }
-  .proj-tab:hover {
+  .project-tags .tag-link:hover {
+    background: var(--color-accent-lt);
+    border-color: var(--color-accent);
     color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
   }
   .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
