@@ -1,7 +1,7 @@
 ---
 title: "FreshCart Australia: SQL Analytics for Grocery E-Commerce"
 category: "analytics-visualization"
-description: "Three years of transactional data from a fictional Australian online grocer, dissected across 16 business questions using advanced SQL. Covers cohort retention, RFM segmentation, promotional ROI, market basket analysis, and category performance — the full analytical toolkit of a commercial analyst."
+description: "Three years of transactional data from a fictional Australian online grocer, dissected across 16 business questions using advanced SQL. Covers cohort retention, RFM segmentation, promotional ROI, market basket analysis, and category performance. The full analytical toolkit of a commercial analyst."
 tags: ["SQL", "DuckDB", "Python", "Cohort Analysis", "RFM Segmentation", "E-Commerce"]
 thumbnail: "/images/projects/fresh-cart-sql-analytics-banner.png"
 github: "https://github.com/Thanh-Tung-Do/FreshCart-Australia-SQL-Analytics-for-Grocery-E-Commerce"
