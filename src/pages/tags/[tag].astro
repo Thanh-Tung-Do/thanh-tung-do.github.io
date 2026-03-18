@@ -1,0 +1,155 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+
+  // Collect all unique tags across projects and blog posts
+  const tagSet = new Set<string>();
+  projects.forEach(p => p.data.tags.forEach(t => tagSet.add(t)));
+  posts.forEach(p => p.data.tags.forEach(t => tagSet.add(t)));
+
+  return Array.from(tagSet).map(tag => ({
+    params: { tag: tag.toLowerCase().replace(/\s+/g, '-') },
+    props: { originalTag: tag },
+  }));
+}
+
+const { originalTag } = Astro.props;
+const { tag } = Astro.params;
+
+const allProjects = (await getCollection('projects'))
+  .filter(p => p.data.tags.some(t => t.toLowerCase().replace(/\s+/g, '-') === tag))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .filter(p => p.data.tags.some(t => t.toLowerCase().replace(/\s+/g, '-') === tag))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout
+  title={`#${originalTag} — Ryan Do`}
+  description={`Projects and posts tagged with ${originalTag}.`}
+>
+  <Nav isHome={false} />
+
+  <main class="tag-main">
+    <div class="container">
+      <header class="tag-header fade-in">
+        <a href="/#portfolio" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          All projects
+        </a>
+        <div class="tag-pill">#{originalTag}</div>
+        <h1>Tagged: {originalTag}</h1>
+        <p class="tag-sub">
+          {allProjects.length + allPosts.length} result{allProjects.length + allPosts.length !== 1 ? 's' : ''}
+          across projects and posts.
+        </p>
+      </header>
+
+      {allProjects.length > 0 && (
+        <section class="tag-section fade-in">
+          <h2 class="section-label">Projects</h2>
+          <div class="tag-grid">
+            {allProjects.map(project => (
+              <ProjectCard
+                title={project.data.title}
+                organisation={project.data.organisation}
+                description={project.data.description}
+                tags={project.data.tags}
+                slug={project.slug}
+                github={project.data.github}
+                live={project.data.live}
+                thumbnail={project.data.thumbnail}
+                category={project.data.category}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {allPosts.length > 0 && (
+        <section class="tag-section fade-in">
+          <h2 class="section-label">Posts</h2>
+          <div class="tag-grid">
+            {allPosts.map(post => (
+              <BlogCard
+                title={post.data.title}
+                date={post.data.date}
+                excerpt={post.data.excerpt}
+                tags={post.data.tags}
+                slug={post.slug}
+                category={post.data.category}
+                thumbnail={post.data.thumbnail}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {allProjects.length === 0 && allPosts.length === 0 && (
+        <div class="tag-empty fade-in">
+          <p>Nothing tagged with "{originalTag}" yet.</p>
+        </div>
+      )}
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .tag-main { padding: 64px 0 96px; }
+
+  .tag-header { margin-bottom: 56px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 20px;
+    transition: color var(--transition);
+  }
+  .back-link:hover { color: var(--color-accent); }
+
+  .tag-pill {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--color-accent-lt);
+    color: var(--color-accent);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .tag-header h1 { margin-bottom: 8px; }
+  .tag-sub { color: var(--color-muted); }
+
+  .tag-section { margin-bottom: 56px; }
+  .tag-section .section-label { margin-bottom: 20px; display: block; }
+
+  .tag-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .tag-empty {
+    padding: 64px;
+    text-align: center;
+    color: var(--color-muted);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  @media (max-width: 960px) { .tag-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .tag-grid { grid-template-columns: 1fr; } }
+</style>

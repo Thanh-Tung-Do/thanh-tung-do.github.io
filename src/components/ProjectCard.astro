@@ -45,7 +45,7 @@ const visibleTags = tags.slice(0, 4);
     <h3><a href={`/projects/${slug}`}>{title}</a></h3>
     <p class="card-desc">{description}</p>
     <div class="card-tags">
-      {visibleTags.map(t => <span class="tag">{t}</span>)}
+      {visibleTags.map(t => <a href={`/tags/${t.toLowerCase().replace(/\s+/g, '-')}`} class="tag tag-link">{t}</a>)}
       {tags.length > 4 && <span class="tag">+{tags.length - 4}</span>}
     </div>
     <div class="card-footer">
@@ -145,6 +145,8 @@ const visibleTags = tags.slice(0, 4);
     margin-bottom: 16px;
   }
   .card-tags .tag { font-size: 0.73rem; padding: 3px 10px; }
+  .tag-link { transition: background var(--transition), color var(--transition), border-color var(--transition); }
+  .tag-link:hover { background: var(--color-accent-lt); border-color: var(--color-accent); color: var(--color-accent); }
 
   .card-footer {
     display: flex;
