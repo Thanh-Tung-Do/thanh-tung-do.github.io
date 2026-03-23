@@ -166,7 +166,12 @@ import site from '../data/site.json';
 (function () {
   var canvas = document.getElementById('hero-canvas');
   var ctx = canvas.getContext('2d');
-  var ACCENT = '0,88,133';
+  function getAccent() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+      (!document.documentElement.getAttribute('data-theme') &&
+       window.matchMedia('(prefers-color-scheme: dark)').matches);
+    return dark ? '77,170,220' : '0,88,133';
+  }
   var CONNECT_DIST = 130;
   var SPEED = 0.35;
   var particles = [];
@@ -192,6 +197,7 @@ import site from '../data/site.json';
   }
 
   function draw() {
+    var ACCENT = getAccent();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < particles.length; i++) {
       for (var j = i + 1; j < particles.length; j++) {

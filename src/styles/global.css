@@ -193,3 +193,58 @@ a.tag-link:hover {
 @media (max-width: 540px) {
   .container { padding: 0 16px; }
 }
+
+/* ─── Dark mode ─────────────────────────────────────────────── */
+/* Smooth transition when toggling */
+body, .site-nav {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Dark tokens — applied via system preference or explicit toggle */
+:root[data-theme="dark"],
+:root:not([data-theme="light"]):has(~ *) {
+  /* fallback handled below via media query */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg:       #16181d;
+    --color-surface:  #1e2028;
+    --color-border:   #2c2f3d;
+    --color-text:     #e2e4f0;
+    --color-muted:    #8a8da0;
+    --color-accent:   #4daadc;
+    --color-accent-h: #6bbce6;
+    --color-accent-lt:#132031;
+    --shadow-sm:      0 1px 3px rgba(0,0,0,.30);
+    --shadow-md:      0 4px 16px rgba(0,0,0,.40);
+    --shadow-lg:      0 8px 32px rgba(0,0,0,.50);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg:       #16181d;
+  --color-surface:  #1e2028;
+  --color-border:   #2c2f3d;
+  --color-text:     #e2e4f0;
+  --color-muted:    #8a8da0;
+  --color-accent:   #4daadc;
+  --color-accent-h: #6bbce6;
+  --color-accent-lt:#132031;
+  --shadow-sm:      0 1px 3px rgba(0,0,0,.30);
+  --shadow-md:      0 4px 16px rgba(0,0,0,.40);
+  --shadow-lg:      0 8px 32px rgba(0,0,0,.50);
+}
+
+/* Theme toggle icon visibility */
+.icon-sun { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun  { display: block; }
+  :root:not([data-theme="light"]) .icon-moon { display: none;  }
+}
+:root[data-theme="dark"] .icon-sun  { display: block; }
+:root[data-theme="dark"] .icon-moon { display: none;  }
