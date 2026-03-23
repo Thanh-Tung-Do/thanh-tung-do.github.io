@@ -218,7 +218,3 @@ body, .site-nav {
   --shadow-lg:      0 8px 32px rgba(0,0,0,.50);
 }
 
-/* Theme toggle icon visibility */
-.icon-sun { display: none; }
-:root[data-theme="dark"] .icon-sun  { display: block; }
-:root[data-theme="dark"] .icon-moon { display: none;  }
