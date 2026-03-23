@@ -14,11 +14,11 @@ interface Props {
 const { title, organisation, description, tags, slug, github, live, thumbnail, category } = Astro.props;
 
 const categoryColors: Record<string, string> = {
-  'analytics-visualization': '#0077b5',
-  'data-science-ml': '#0a66c2',
-  'side-projects': '#004182',
+  'analytics-visualization': '#005885',
+  'data-science-ml': '#004f7a',
+  'side-projects': '#003d63',
 };
-const bgColor = categoryColors[category] ?? '#0077b5';
+const bgColor = categoryColors[category] ?? '#005885';
 
 const categoryIcons: Record<string, string> = {
   'analytics-visualization': `<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/>`,
