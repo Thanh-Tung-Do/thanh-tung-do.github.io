@@ -143,6 +143,16 @@ section {
   color: var(--color-accent);
 }
 
+a.tag-link {
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+a.tag-link:hover {
+  background: var(--color-accent-lt);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
 /* ─── Scroll fade-in ────────────────────────────────────────── */
 .fade-in {
   opacity: 0;
