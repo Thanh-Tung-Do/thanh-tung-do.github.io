@@ -8,34 +8,55 @@ Personal portfolio website for Thanh Tung Do (Ryan Do), Business Insights Analys
 
 ## About
 
-A clean, minimal single-page portfolio built with pure HTML, CSS, and vanilla JavaScript — no frameworks, no dependencies. Hosted on GitHub Pages.
+A clean, minimal portfolio built with Astro, hosted on GitHub Pages. Features a dark-mode-default design, content-driven project pages, and scroll-triggered animations.
+
+## Tech Stack
+
+- [Astro](https://astro.build) — static site framework
+- TypeScript
+- CSS custom properties (design tokens, dark/light mode)
+- Google Fonts (Plus Jakarta Sans, DM Sans)
+- GitHub Pages (static hosting via `gh-pages` branch)
+- Netlify (alternative deploy target via `netlify.toml`)
 
 ## Structure
 
 ```
-├── index.html                    # Main portfolio (all CSS + JS embedded)
-├── Profile-picture.jpg           # Profile photo
-├── Ryan-Do-CV.pdf                # CV download
-└── projects/
-    ├── client-health-score.html  # PepsiCo — Client Health Score Model
-    ├── geospatial-rtm.html       # BAT — Geospatial Route-to-Market Optimisation
-    ├── sales-compliance.html     # BAT — Sales Compliance Detector
-    └── power-bi-suite.html       # BAT — Power BI Trade Marketing Suite
+├── src/
+│   ├── components/         # Astro components (Nav, Hero, ProjectCard, etc.)
+│   ├── content/
+│   │   ├── projects/       # Project markdown files (one per project)
+│   │   ├── experience/     # Work experience markdown files
+│   │   └── blog/           # Blog post markdown files
+│   ├── layouts/            # BaseLayout, ProjectDetail, BlogPost
+│   ├── pages/              # Route pages (index, projects/[slug], blog/[slug], tags/[tag])
+│   ├── styles/             # global.css (design tokens, dark mode)
+│   └── data/               # site.json (site-wide metadata)
+├── public/
+│   ├── images/projects/    # Project thumbnails
+│   └── assets/             # CV PDF
+└── astro.config.mjs
 ```
 
-## Tech Stack
+## Local Development
 
-- HTML5 + CSS3 + vanilla JavaScript
-- Google Fonts (Inter)
-- GitHub Pages (static hosting)
+```bash
+npm install
+npm run dev
+```
 
-## Features
+## Build & Deploy
 
-- Responsive layout with mobile hamburger menu
-- Scroll-triggered fade-in animations
-- Active nav link highlighting
-- Clickable project cards with individual detail pages
-- Downloadable CV
+```bash
+npm run build      # output to dist/
+npm run preview    # preview the build locally
+```
+
+Deployment to GitHub Pages is handled by `.github/workflows/deploy-gh-pages.yml` on push to `main`.
+
+## Content
+
+Projects, experience, and blog posts are managed as Markdown files in `src/content/`. The schema for each collection is defined in `src/content/config.ts`.
 
 ## Contact
 
