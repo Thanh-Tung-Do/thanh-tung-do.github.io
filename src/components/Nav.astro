@@ -36,19 +36,17 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
     <label class="theme-toggle" for="theme-checkbox">
       <input type="checkbox" id="theme-checkbox" class="theme-checkbox" aria-label="Toggle dark mode" />
       <div class="toggle-pill">
-        <div class="toggle-handle">
-          <!-- Sun — shown in light mode -->
-          <svg class="icon-sun" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
-            <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
-            <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/>
-          </svg>
-          <!-- Moon — shown in dark mode -->
-          <svg class="icon-moon" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </div>
+        <!-- Sun — left side, uncovered in dark mode -->
+        <svg class="track-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
+          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
+          <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon — right side, uncovered in light mode -->
+        <svg class="track-icon" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
       </div>
     </label>
 
@@ -178,34 +176,36 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
     height: 28px;
     background: var(--color-text);
     border-radius: 14px;
-    padding: 4px;
+    padding: 0 5px;
+    position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     transition: background 0.3s ease;
   }
-  .toggle-handle {
+  /* Sliding handle */
+  .toggle-pill::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background: var(--color-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text);
-    flex-shrink: 0;
-    transition: transform 0.35s ease, color var(--transition);
+    transition: transform 0.35s ease;
+    z-index: 1;
   }
-  .theme-checkbox:checked + .toggle-pill .toggle-handle {
+  .theme-checkbox:checked + .toggle-pill::before {
     transform: translateX(24px);
   }
-  .theme-toggle:hover .toggle-handle { color: var(--color-accent); }
-  /* Light mode: sun, Dark mode: moon */
-  .icon-sun { display: block; }
-  .icon-moon { display: none; }
-  :global(:root[data-theme="dark"]) .icon-sun { display: none; }
-  :global(:root[data-theme="dark"]) .icon-moon { display: block; }
-  .theme-checkbox:checked + .toggle-pill .icon-sun { display: none; }
-  .theme-checkbox:checked + .toggle-pill .icon-moon { display: block; }
+  /* Icons sit on the track — handle slides over the active one */
+  .track-icon {
+    color: var(--color-bg);
+    position: relative;
+    z-index: 0;
+    flex-shrink: 0;
+  }
 
   /* Hamburger */
   .hamburger {
