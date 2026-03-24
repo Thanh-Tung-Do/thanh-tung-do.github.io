@@ -182,6 +182,7 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
     align-items: center;
     justify-content: space-between;
     transition: background 0.3s ease;
+    isolation: isolate;
   }
   /* Sliding handle */
   .toggle-pill::before {
@@ -199,11 +200,12 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
   .theme-checkbox:checked + .toggle-pill::before {
     transform: translateX(24px);
   }
-  /* Icons sit on the track — handle slides over the active one */
+  /* Icons always white — difference blend makes them dark on light bg, light on dark bg */
   .track-icon {
-    color: var(--color-bg);
+    color: white;
+    mix-blend-mode: difference;
     position: relative;
-    z-index: 0;
+    z-index: 2;
     flex-shrink: 0;
   }
 
