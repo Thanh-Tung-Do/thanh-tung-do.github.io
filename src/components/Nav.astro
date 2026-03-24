@@ -176,11 +176,7 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
     height: 28px;
     background: var(--color-text);
     border-radius: 14px;
-    padding: 0 5px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     transition: background 0.3s ease;
     isolation: isolate;
   }
@@ -200,14 +196,22 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
   .theme-checkbox:checked + .toggle-pill::before {
     transform: translateX(24px);
   }
-  /* Icons always white — difference blend makes them dark on light bg, light on dark bg */
+  :global(:root[data-theme="dark"]) .toggle-pill::before {
+    background: #16181d;
+  }
+  /* Icons pinned to exact centre of each handle stop */
   .track-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     color: white;
     mix-blend-mode: difference;
-    position: relative;
     z-index: 2;
-    flex-shrink: 0;
   }
+  /* Sun: centred on left handle stop (handle left=4, width=20 → centre=14px) */
+  .track-icon:first-child { left: 8.5px; }
+  /* Moon: centred on right handle stop (handle left=28, width=20 → centre=38px) */
+  .track-icon:last-child  { left: 32.5px; }
 
   /* Hamburger */
   .hamburger {
