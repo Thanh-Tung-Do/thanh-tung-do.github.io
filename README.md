@@ -2,7 +2,7 @@
 
 Personal portfolio website for Thanh Tung Do (Ryan Do), Business Insights Analyst based in Sydney, NSW.
 
-**Live site:** https://thanh-tung-do.github.io
+**Live site:** https://ryando.au
 
 ---
 
