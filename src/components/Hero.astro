@@ -164,6 +164,7 @@ import site from '../data/site.json';
 
 <script is:inline>
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var canvas = document.getElementById('hero-canvas');
   var ctx = canvas.getContext('2d');
   function getAccent() {

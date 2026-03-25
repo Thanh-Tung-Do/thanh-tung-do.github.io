@@ -5,12 +5,18 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: string;
+  articleDate?: Date;
+  jsonLd?: object;
 }
 
 const {
   title,
   description = 'Ryan Do, Business Insights Analyst based in Sydney. Six years of FMCG analytics across BAT and PepsiCo.',
   ogImage = '/images/profile.jpg',
+  ogType = 'website',
+  articleDate,
+  jsonLd,
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
@@ -22,14 +28,22 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8f7f4" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1A1A1A" />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={new URL(ogImage, Astro.site)} />
   <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:site_name" content="Ryan Do" />
+  {ogType === 'article' && articleDate && (
+    <Fragment>
+      <meta property="article:published_time" content={articleDate.toISOString()} />
+      <meta property="article:author" content="https://ryando.au" />
+    </Fragment>
+  )}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -39,9 +53,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
   <link rel="canonical" href={canonicalUrl} />
 
-  <!-- Google Fonts preconnect -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
   <title>{title}</title>
   <!-- Dark mode: apply before render to prevent flash -->
@@ -52,6 +67,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     })();
   </script>
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "45e39aa3715c42ec991964eba67548bc"}'></script>
+
+  <!-- JSON-LD structured data -->
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 </head>
 <body>
   <slot />

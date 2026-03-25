@@ -20,9 +20,20 @@ const formattedDate = date.toLocaleDateString('en-AU', {
   month: 'long',
   year: 'numeric',
 });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: excerpt,
+  datePublished: date.toISOString(),
+  author: { '@type': 'Person', name: 'Ryan Do', url: 'https://ryando.au' },
+  publisher: { '@type': 'Person', name: 'Ryan Do', url: 'https://ryando.au' },
+  ...(thumbnail ? { image: `https://ryando.au${thumbnail}` } : {}),
+};
 ---
 
-<BaseLayout title={`${title} — Ryan Do`} description={excerpt} ogImage={thumbnail}>
+<BaseLayout title={`${title} — Ryan Do`} description={excerpt} ogImage={thumbnail} ogType="article" articleDate={date} jsonLd={jsonLd}>
   <nav class="detail-nav">
     <div class="container">
       <a href="/" class="nav-logo">Ryan Do</a>

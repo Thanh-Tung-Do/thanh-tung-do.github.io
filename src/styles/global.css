@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
-
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
   --color-bg:       #f8f7f4;
@@ -186,6 +184,14 @@ a.tag-link:hover {
 #backToTop.visible { opacity: 1; visibility: visible; }
 #backToTop:hover { background: var(--color-accent-h); transform: translateY(-2px); }
 
+/* ─── Focus styles ──────────────────────────────────────────── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 /* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 768px) {
   section { padding: 64px 0; }
@@ -205,13 +211,13 @@ body, .site-nav {
 
 /* Dark mode tokens */
 :root[data-theme="dark"] {
-  --color-bg:       #16181d;
-  --color-surface:  #1e2028;
-  --color-border:   #2c2f3d;
+  --color-bg:       #1A1A1A;
+  --color-surface:  #181a1b;
+  --color-border:   #8e9ba7;
   --color-text:     #f0f2ff;
-  --color-muted:    #c4c7d8;
-  --color-accent:   #4daadc;
-  --color-accent-h: #6bbce6;
+  --color-muted:    #dedfe5;
+  --color-accent:   #2477c5;
+  --color-accent-h: #3c8be4;
   --color-accent-lt:#132031;
   --shadow-sm:      0 1px 3px rgba(0,0,0,.30);
   --shadow-md:      0 4px 16px rgba(0,0,0,.40);
