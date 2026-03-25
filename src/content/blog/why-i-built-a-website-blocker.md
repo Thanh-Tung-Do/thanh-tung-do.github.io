@@ -4,8 +4,11 @@ date: 2026-03-25
 excerpt: "On the attention economy, the problems with existing blockers, and what it felt like to ship a working Chrome extension in an afternoon without writing a line of JavaScript."
 tags: ["Chrome Extension", "Productivity", "Vibe Coding", "AI Tools", "Focus"]
 category: project-writeup
+thumbnail: "/images/blog/anthropic-claude-code.webp"
 draft: false
 ---
+
+![Claude Code by Anthropic](/images/blog/anthropic-claude-code.webp)
 
 As a data science tutor, I spend a lot of time watching people learn. Or, more accurately, watching people *try* to learn while their attention is somewhere else entirely. Phones face-down on the desk but still glowing. Laptop screens angled just enough to hide what is actually open. More often than not, it is social media. Sometimes YouTube. Rarely the lecture slides.
 
