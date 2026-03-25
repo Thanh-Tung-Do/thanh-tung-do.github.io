@@ -7,10 +7,11 @@ interface Props {
   excerpt: string;
   tags: string[];
   category: string;
+  thumbnail?: string;
   wordCount: number;
 }
 
-const { title, date, excerpt, tags, wordCount } = Astro.props;
+const { title, date, excerpt, tags, thumbnail, wordCount } = Astro.props;
 
 const readingTime = Math.max(1, Math.round(wordCount / 200));
 
@@ -21,7 +22,7 @@ const formattedDate = date.toLocaleDateString('en-AU', {
 });
 ---
 
-<BaseLayout title={`${title} — Ryan Do`} description={excerpt}>
+<BaseLayout title={`${title} — Ryan Do`} description={excerpt} ogImage={thumbnail}>
   <nav class="detail-nav">
     <div class="container">
       <a href="/" class="nav-logo">Ryan Do</a>
