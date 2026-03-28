@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import ProjectGrid from '../../components/ProjectGrid.astro';
+import Footer from '../../components/Footer.astro';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Projects — Ryan Do"
+  description="All projects by Ryan Do — analytics, machine learning, and side projects from six years of commercial practice."
+>
+  <Nav />
+  <ProjectGrid projects={projects} />
+  <Footer />
+</BaseLayout>

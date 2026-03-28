@@ -4,9 +4,11 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   projects: CollectionEntry<'projects'>[];
+  preview?: boolean;
 }
 
-const { projects } = Astro.props;
+const { projects, preview = false } = Astro.props;
+const displayProjects = preview ? projects.slice(0, 3) : projects;
 
 const categories = [
   { id: 'all', label: 'All' },
@@ -20,28 +22,30 @@ const categories = [
   <div class="container">
     <div class="section-header fade-in">
       <span class="section-label">Portfolio</span>
-      <h2>Selected Work</h2>
+      <h2>{preview ? 'Selected Work' : 'All Projects'}</h2>
       <p class="section-sub">
         Analytics, machine learning, and side projects from six years of commercial practice
         and personal exploration.
       </p>
     </div>
 
-    <div class="filter-tabs fade-in" role="tablist" aria-label="Filter projects by category">
-      {categories.map(cat => (
-        <button
-          class="filter-tab"
-          data-filter-tab={cat.id}
-          role="tab"
-          aria-selected={cat.id === 'all' ? 'true' : 'false'}
-        >
-          {cat.label}
-        </button>
-      ))}
-    </div>
+    {!preview && (
+      <div class="filter-tabs fade-in" role="tablist" aria-label="Filter projects by category">
+        {categories.map(cat => (
+          <button
+            class="filter-tab"
+            data-filter-tab={cat.id}
+            role="tab"
+            aria-selected={cat.id === 'all' ? 'true' : 'false'}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+    )}
 
     <div class="projects-grid" id="projects-grid">
-      {projects.map(project => (
+      {displayProjects.map(project => (
         <div data-category={project.data.category} class="card-wrapper">
           <ProjectCard
             title={project.data.title}
@@ -59,6 +63,17 @@ const categories = [
     </div>
 
     <p class="empty-state" id="empty-state" aria-live="polite">No projects in this category yet. More coming soon.</p>
+
+    {preview && (
+      <div class="see-all fade-in">
+        <a href="/projects" class="btn-secondary">
+          See all projects
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    )}
   </div>
 </section>
 
@@ -109,6 +124,11 @@ const categories = [
     font-size: 0.95rem;
   }
   .empty-state.visible { display: block; }
+
+  .see-all {
+    text-align: center;
+    margin-top: 48px;
+  }
 
   @media (max-width: 960px) {
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
