@@ -240,6 +240,7 @@ const categoryLabel: Record<string, string> = {
     line-height: 1;
     margin-bottom: 6px;
   }
+  :global(:root[data-theme="dark"]) .project-body :global(.result-number) { color: #f2f2f2; }
   .project-body :global(.result-label) {
     font-size: 0.82rem;
     color: var(--color-muted);
@@ -251,7 +252,7 @@ const categoryLabel: Record<string, string> = {
     padding: 24px 0;
   }
   :global(:root[data-theme="dark"]) .detail-footer {
-    background: #0e1015;
+    background: #141414;
   }
   .detail-footer .container {
     display: flex;
