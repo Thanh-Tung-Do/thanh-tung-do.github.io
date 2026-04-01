@@ -192,11 +192,14 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
   .toggle-pill {
     width: 52px;
     height: 28px;
-    background: var(--color-text);
+    background: var(--color-accent);
     border-radius: 14px;
     position: relative;
     transition: background 0.3s ease;
     isolation: isolate;
+  }
+  :global(:root[data-theme="dark"]) .toggle-pill {
+    background: var(--color-text);
   }
   /* Sliding handle */
   .toggle-pill::before {
@@ -222,10 +225,13 @@ const a = (anchor: string) => isHome ? anchor : `/${anchor}`;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: white;
-    mix-blend-mode: difference;
     z-index: 2;
   }
+  /* Sun: blue in light mode, dark in dark mode */
+  .track-icon:first-child { color: var(--color-accent); }
+  :global(:root[data-theme="dark"]) .track-icon:first-child { color: #1a1a1a; }
+  /* Moon is always light — visible on blue light-mode track AND dark handle */
+  .track-icon:last-child  { color: rgba(255,255,255,0.90); }
   /* Sun: centred on left handle stop (handle left=4, width=20 → centre=14px) */
   .track-icon:first-child { left: 8.5px; }
   /* Moon: centred on right handle stop (handle left=28, width=20 → centre=38px) */

@@ -80,6 +80,8 @@ section {
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: 12px;
+  padding-left: 10px;
+  border-left: 2px solid var(--color-accent);
 }
 
 /* ─── Buttons ───────────────────────────────────────────────── */
